@@ -1,0 +1,55 @@
+.resume {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+}
+.resume-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.resume-input input {
+  outline: none;
+  width: 100%;
+  padding: 13px 10px;
+  border: 1px solid #6678c5;
+  border-radius: 10px;
+  font-size: 17px;
+}
+.resume-input input::placeholder {
+  font-size: 15px;
+  color: rgb(211, 211, 211);
+}
+.resume-input label {
+  font-size: 16px;
+}
+
+.resume-input textarea {
+  border: 1px solid #6678c5;
+
+  width: 100%;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  border-radius: 10px;
+  height: 100px;
+  scrollbar-width: none;
+}
+
+.resume-input button {
+  padding: 12px;
+  font-size: 18px;
+  background-color: #123bf4;
+  border-radius: 13px;
+  cursor: pointer;
+  border: none;
+}

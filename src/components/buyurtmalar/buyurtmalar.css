@@ -1,0 +1,101 @@
+.buyurtmalarim {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.buyurtmalar {
+  background-color: #1d1d61;
+  padding: 10px 20px;
+  border-radius: 8px;
+  position: relative;
+}
+.user-a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-a img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.about-user {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+.about-user p {
+  width: fit-content;
+  background-color: #4646d6;
+  padding: 3px 15px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 8px;
+}
+.buyurtma-discripton {
+  font-size: 32px;
+  line-height: 1.12;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.buyurtma-title {
+  line-height: 1.5;
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+.buyurtma-narx {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(110, 110, 207, 0.451);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.buyurtma-javob_btn {
+  background-color: #24249a;
+  border: 1px solid #4b4bc4;
+  padding: 12px;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.buyurtma-javob_btn:hover {
+  background-color: #262685;
+}
+@media (max-width: 768px) {
+  .buyurtmalarim {
+    margin-bottom: 70px;
+  }
+  .buyurtmalar {
+    padding: 20px;
+  }
+  .user-a {
+    margin-top: 20px;
+  }
+  .user-a img {
+    width: 60px;
+    height: 60px;
+  }
+  .user-a h2 {
+    font-size: 16px;
+  }
+  .buyurtma-narx {
+    font-size: 13px;
+  }
+  .buyurtma-discripton {
+    font-size: 24px;
+  }
+  .buyurtma-javob_btn {
+    font-size: 16px;
+  }
+}

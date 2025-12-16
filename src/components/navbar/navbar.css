@@ -1,0 +1,107 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.Logo {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.navbar-active {
+  color: #7171e7;
+  transition: 0.2s ease;
+  font-weight: 700;
+}
+.navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+li {
+  list-style: none;
+  font-weight: 600;
+}
+
+.siti-login {
+  display: flex;
+  align-items: center;
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+}
+.siti-login .nav-create_ {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid white;
+  background-color: white;
+  color: #222;
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.siti-login .login-btn {
+  width: 100px;
+  padding: 10px;
+  background-color: #8686f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.siti-login .login-btn svg {
+  display: block;
+}
+.mobile-navbar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(20px);
+  background-color: #2828b1;
+  border-top: 1px solid #fff;
+  width: 100%;
+  z-index: 10;
+}
+.mb-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 12px;
+}
+.mb-nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .header {
+    display: none;
+  }
+  .mobile-navbar {
+    display: block;
+  }
+}
