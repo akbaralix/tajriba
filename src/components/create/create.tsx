@@ -27,7 +27,7 @@ function Create() {
         navigate("/login");
         return;
       }
-      const response = await fetch("http://localhost:5000/api/resume/create", {
+      const response = await fetch("https://tajriba-a32v.onrender.com/api/resume/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -78,3 +78,4 @@ function Create() {
 }
 
 export default Create;
+
