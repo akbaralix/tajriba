@@ -28,7 +28,7 @@ function Login() {
       };
 
       // 🔹 Backendga POST request
-      const res = await fetch("http://localhost:5000/api/user/login", {
+      const res = await fetch("https://tajriba-a32v.onrender.com/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -63,3 +63,4 @@ function Login() {
 }
 
 export default Login;
+
