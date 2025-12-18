@@ -2,11 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #333;
+  backdrop-filter: blur(20px);
+  background-color: #33333351;
   padding: 10px 20px;
   border-radius: 20px;
-  margin-top: 20px;
+
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1200px;
+
+  z-index: 1000;
 }
+
 .Logo {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.8rem;
@@ -19,7 +29,7 @@
   gap: 3rem;
 }
 .navbar-active {
-  color: #7171e7;
+  color: #d5d5e4;
   transition: 0.2s ease;
   font-weight: 700;
 }
@@ -70,6 +80,7 @@ li {
   justify-content: center;
 }
 .siti-login .login-btn svg {
+  color: rgb(255, 255, 255);
   display: block;
 }
 .mobile-navbar {
@@ -78,7 +89,9 @@ li {
   bottom: 0;
   left: 0;
   backdrop-filter: blur(20px);
-  background-color: #2828b1;
+  background-color: #0f0f0f8e;
+  backdrop-filter: blur(20px);
+  padding: 0px 20px;
   border-top: 1px solid #fff;
   width: 100%;
   z-index: 10;

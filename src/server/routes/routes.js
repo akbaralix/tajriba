@@ -1,29 +1,41 @@
 import express from "express";
-import User from "../models/User.js";
+import Resume from "../models/Resume.js";
 
 const router = express.Router();
 
-// Foydalanuvchini saqlash yoki yangilash
-router.post("/login", async (req, res) => {
-  const { uid, name, email, photo } = req.body;
+// Create resume
+router.post("/create", async (req, res) => {
+  const { userId, kasb, bio, username, userpic, title } = req.body;
+
+  if (!userId || !kasb || !bio) {
+    return res.status(400).json({ message: "Barcha maydonlar majburiy" });
+  }
+
   try {
-    const existingUser = await User.findOne({ uid });
+    const newResume = new Resume({
+      userId,
+      kasb,
+      bio,
+      username,
+      userpic,
+      title,
+    });
 
-    if (existingUser) {
-      // mavjud bo‘lsa yangilash
-      existingUser.name = name;
-      existingUser.email = email;
-      existingUser.photo = photo;
-      await existingUser.save();
-      return res.json(existingUser);
-    }
+    await newResume.save();
+    res.json({ message: "Resume saqlandi", resume: newResume });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server xatolik" });
+  }
+});
 
-    // yangi user yaratish
-    const newUser = new User({ uid, name, email, photo });
-    await newUser.save();
-    res.json(newUser);
-  } catch (error) {
-    console.error(error);
+// Get all resumes
+router.get("/all", async (req, res) => {
+  try {
+    const resumes = await Resume.find();
+    res.json({ resumes });
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "Server xatolik" });
   }
 });

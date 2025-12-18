@@ -4,10 +4,10 @@ const resumeSchema = new mongoose.Schema({
   userId: { type: String, required: true },
   kasb: { type: String, required: true },
   bio: { type: String, required: true },
-  username: { type: String }, // foydalanuvchi ismi
-  soha: { type: String }, // sohasi
-  userpic: { type: String }, // rasm (base64 yoki URL)
-  title: { type: String }, // ish e'lonining sarlavhasi
+  tguser: { type: String },
+  username: { type: String },
+  userpic: { type: String },
+  title: { type: String },
 });
 
 const Resume = mongoose.model("Resume", resumeSchema);

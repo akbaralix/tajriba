@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 function Navbar() {
-  const user = "";
+  const user = localStorage.getItem("userData");
   const navigate = useNavigate();
   return (
     <div>
@@ -57,7 +57,13 @@ function Navbar() {
           <div className="siti-login">
             {user ? (
               <div className="nav-btn">
-                <NavLink style={{ fontSize: 25, marginTop: 6 }} to="/profil">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "navbar-active" : ""
+                  }
+                  style={{ fontSize: 25, marginTop: 6 }}
+                  to="/profil"
+                >
                   <FaUser />
                 </NavLink>
                 <button

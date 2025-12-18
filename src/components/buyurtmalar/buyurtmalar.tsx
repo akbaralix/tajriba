@@ -1,56 +1,85 @@
 import "./buyurtmalar.css";
+import { FaTelegram } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 function Buyurtmalar() {
-  const buyurtma = [
-    {
-      id: 1,
-      username: "Akbarali Tursunboyev",
-      soha: "Dizayner",
-      userpic:
-        "data:image/jpeg;base64,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",
-      discripton: "Mobil dasturchi",
-      title:
-        "Menag Java tilda mustaqil dastur yoza oladigan 3 ta dasturchi kerak mutahasislar bolsa ishga olamiz talab 1yillik tajriba",
-      narx: "100 000 so'm",
-    },
-    {
-      id: 1,
-      username: "Akbarali Tursunboyev",
-      soha: "Dizayner",
-      userpic:
-        "data:image/jpeg;base64,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",
-      discripton: "Mobil dasturchi",
-      title:
-        "Menag Java tilda mustaqil dastur yoza oladigan 3 ta dasturchi kerak mutahasislar bolsa ishga olamiz talab 1yillik tajribaMenag Java tilda mustaqil dastur yoza oladigan 3 ta dasturchi kerak mutahasislar bolsa ishga olamiz talab 1yillik tajriba",
-      narx: "100 000",
-    },
-  ];
-  if (buyurtma.length === 0) {
+  const [buyurtma, setBuyurtma] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/order/all"); // /all endpoint
+        const data = await res.json();
+        setBuyurtma(data.orders); // backenddan kelayotgan 'orders' property
+      } catch (err) {
+        console.error("Xatolik:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  if (loading) {
     return (
-      <h2 style={{ textAlign: "center", marginTop: 20 }}>
-        Buyurtmalar mavjud emas !
-      </h2>
-    );
-  }
-  return (
-    <div>
-      <h1 style={{ textAlign: "center", fontSize: 26 }}>
-        Jami buyurtmalar {buyurtma.length}
-      </h1>
       <div className="buyurtmalarim">
-        {buyurtma.map((item) => (
-          <div className="buyurtmalar" key={item.id}>
+        {[1, 2, 3].map((i) => (
+          <div className="buyurtmalar-loader" key={i}>
             <div className="user-a">
-              <img src={item.userpic} alt="" />
-              <div className="about-user">
-                <h2> {item.username}</h2>
-                <p>{item.soha}</p>
+              <div className="loader-img"></div>
+              <div className="about-user-loader">
+                <h2 className="loader-text"></h2>
+                <p className="loader-text"></p>
               </div>
             </div>
-            <h2 className="buyurtma-discripton">{item.discripton}</h2>
-            <p className="buyurtma-title">{item.title}</p>
-            <p className="buyurtma-narx">{item.narx}</p>
-            <button className="buyurtma-javob_btn">Javob berish</button>
+            <div className="buyurtma-narx-loader"></div>
+            <h2 className="loader-text"></h2>
+            <p className=" loader-text"></p>
+            <button className="loader-buyurtma-btn"></button>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (buyurtma.length === 0) {
+    return (
+      <h3 style={{ textAlign: "center", color: "red", marginTop: 50 }}>
+        Buyurtmalar mavjud emas !
+      </h3>
+    );
+  }
+
+  return (
+    <div>
+      <div className="buyurtmalarim">
+        {buyurtma.map((item) => (
+          <div className="buyurtmalar" key={item._id}>
+            <div className="user-a">
+              <img src={item.creatorpic || "/user.png"} alt="" />
+              <div className="about-user">
+                <h2>{item.creator}</h2>
+                <p>Buyurtmachi</p>
+              </div>
+            </div>
+
+            <h2 className="buyurtma-discripton">{item.title}</h2>
+
+            <p className="buyurtma-title">{item.description}</p>
+
+            <p className="buyurtma-narx">{item.budget}</p>
+
+            <a
+              href={`https://t.me/${item.tguserorder || ""}`}
+              target="_blank"
+              rel="noreferrer"
+              className="buyurtma-javob_btn"
+            >
+              <FaTelegram />
+              <p>Javob berish</p>
+            </a>
           </div>
         ))}
       </div>

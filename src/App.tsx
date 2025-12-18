@@ -2,9 +2,11 @@ import Home from "./components/home/home";
 import Navbar from "./components/navbar/navbar";
 import Profil from "./components/profil/profil";
 import Buyurtmalar from "./components/buyurtmalar/buyurtmalar";
-import Create from "./components/create/create";
+import Create from "./components/create/repository-create/create";
 import Mutahasislar from "./components/mutaxassislar/mutaxassislar";
 import Login from "./components/login/login";
+import Haqimizda from "./components/haqimizda/haqimizda";
+
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -19,6 +21,7 @@ function App() {
         <Route path="/mutaxassislar" element={<Mutahasislar />} />
         <Route path="/profil" element={<Profil />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/haqimizda" element={<Haqimizda />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>
