@@ -5,9 +5,16 @@ const router = express.Router();
 
 // Resume yaratish
 router.post("/create", async (req, res) => {
-  const { userId, kasb, bio } = req.body;
+  const { userId, kasb, bio, tguser, username, userpic } = req.body;
   try {
-    const newResume = new Resume({ userId, kasb, bio });
+    const newResume = new Resume({
+      userId,
+      kasb,
+      bio,
+      tguser,
+      username,
+      userpic,
+    });
     await newResume.save();
     res.json({ message: "Resume saqlandi", resume: newResume });
   } catch (error) {
@@ -15,6 +22,7 @@ router.post("/create", async (req, res) => {
     res.status(500).json({ message: "Server xatolik" });
   }
 });
+
 router.get("/all", async (req, res) => {
   try {
     const resumes = await Resume.find();
