@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://tursunboyevakbarali807_db_user:fBuEm29mZLPpZgKq@cluster0.rcjkua0.mongodb.net/yourDBname"
+      "mongodb+srv://tursunboyevakbarali807_db_user:fBuEm29mZLPpZgKq@cluster0.rcjkua0.mongodb.net/?appName=Cluster0"
     );
     console.log("MongoDB ulanishi muvaffaqiyatli");
   } catch (error) {
@@ -13,3 +13,4 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+
