@@ -9,7 +9,7 @@ function Buyurtmalar() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/order/all"); // /all endpoint
+        const res = await fetch("https://tajriba-a32v.onrender.com/api/order/all"); // /all endpoint
         const data = await res.json();
         setBuyurtma(data.orders); // backenddan kelayotgan 'orders' property
       } catch (err) {
@@ -88,3 +88,4 @@ function Buyurtmalar() {
 }
 
 export default Buyurtmalar;
+
