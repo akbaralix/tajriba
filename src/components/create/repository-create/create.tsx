@@ -74,7 +74,7 @@ function Create() {
           };
 
     try {
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
+      const response = await fetch(`https://tajriba-a32v.onrender.com${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bodyData),
@@ -226,3 +226,4 @@ function Create() {
 }
 
 export default Create;
+
