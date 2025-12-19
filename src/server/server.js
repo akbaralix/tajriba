@@ -23,7 +23,7 @@ const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "dist")));
 
 // Barcha GET so‘rovlarni dist/index.html ga yo‘naltirish
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
