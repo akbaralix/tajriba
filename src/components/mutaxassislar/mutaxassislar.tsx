@@ -20,13 +20,9 @@ function Mutahasislar() {
   useEffect(() => {
     const fetchResumes = async () => {
       try {
-<<<<<<< HEAD
         const response = await fetch(
           "https://tajriba-a32v.onrender.com/api/resume/all"
         );
-=======
-        const response = await fetch("https://tajriba-a32v.onrender.com/api/resume/all");
->>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
         if (!response.ok) throw new Error("Ma'lumotlarni olishda xatolik");
 
         const data = await response.json();
@@ -105,4 +101,3 @@ function Mutahasislar() {
 }
 
 export default Mutahasislar;
-
