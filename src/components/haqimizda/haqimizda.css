@@ -167,6 +167,7 @@
     grid-template-columns: 1fr;
     margin-top: 10px;
     gap: 20px;
+    border-radius: 30px;
   }
   .stat-card {
     border-right: none;

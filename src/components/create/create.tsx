@@ -41,14 +41,14 @@ function Create() {
 
     if (type === "resume") {
       if (!resumeData.kasb || !resumeData.bio || !resumeData.tguser) {
-        toast.error("Iltimos, rezume uchun barcha maydonlarni to‘ldiring!");
+        toast.error("Rzume yaratish uchun barcha maydonlarni to‘ldiring!");
         return;
       }
     }
 
     if (type === "order") {
       if (!orderData.title || !orderData.description || !orderData.budget) {
-        toast.error("Iltimos, buyurtma uchun barcha maydonlarni to‘ldiring!");
+        toast.error("Buyurtma berish uchun barcha maydonlarni to‘ldiring!");
         return;
       }
     }
@@ -182,7 +182,7 @@ function Create() {
               <input
                 type="text"
                 placeholder="Masalan: Web sayt tayyorlash"
-                maxLength={40}
+                maxLength={25}
                 value={orderData.title}
                 onChange={(e) =>
                   setOrderData({ ...orderData, title: e.target.value })

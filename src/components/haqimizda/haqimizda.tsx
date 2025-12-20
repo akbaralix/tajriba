@@ -5,7 +5,6 @@ const AboutSection: React.FC = () => {
   return (
     <section className="about-wrapper">
       <div className="about-container">
-        {/* Header */}
         <div className="about-header">
           <span className="badge">Biz Haqimizda</span>
           <h2 className="main-title">
@@ -14,17 +13,17 @@ const AboutSection: React.FC = () => {
           </h2>
         </div>
 
-        {/* Main Grid */}
         <div className="about-grid">
-          {/* Visual Box */}
           <div className="visual-box">
             <div className="blob"></div>
             <div className="image-card">
-              <img src="/image-placeholder.png" alt="Bizning platforma rasmi" />
+              <img
+                src="public/image placholder.png"
+                alt="Bizning platforma rasmi"
+              />
             </div>
           </div>
 
-          {/* Content Box */}
           <div className="content-box">
             <ul className="values-list">
               <li className="value-item">
