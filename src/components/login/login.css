@@ -18,10 +18,7 @@
   backdrop-filter: blur(20px);
   padding: 50px 40px;
   border-radius: 32px;
-<<<<<<< HEAD
-=======
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
->>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   border: 1px solid rgba(255, 255, 255, 0.08);
   max-width: 420px;
   width: 90%;
@@ -118,13 +115,10 @@
 
 .login-container {
   animation: loginReveal 0.6s ease-out forwards;
-<<<<<<< HEAD
 }
 
 @media (max-width: 768px) {
   .google-login-btn {
     font-size: 13px;
   }
-=======
->>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
 }
