@@ -1,4 +1,5 @@
 import React from "react";
+import placholderImg from "../../../public/image placholder.png";
 import "./haqimizda.css";
 
 const AboutSection: React.FC = () => {
@@ -17,10 +18,7 @@ const AboutSection: React.FC = () => {
           <div className="visual-box">
             <div className="blob"></div>
             <div className="image-card">
-              <img
-                src="public/image placholder.png"
-                alt="Bizning platforma rasmi"
-              />
+              <img src={placholderImg} alt="Bizning platforma rasmi" />
             </div>
           </div>
 
