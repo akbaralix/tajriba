@@ -1,9 +1,12 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./profil.css";
 
 function Profil() {
   const navigate = useNavigate();
+  const [count, setCount] = useState("0");
+  const [resumes, setResumes] = useState("0");
+  const [buyurtma, setBuyurtma] = useState("0");
 
   const userData = localStorage.getItem("userData");
   const user = userData ? JSON.parse(userData) : null;
@@ -18,6 +21,49 @@ function Profil() {
     localStorage.removeItem("userData");
     navigate("/login");
   };
+
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      try {
+        const res = await fetch("http://localhost:5000/api/user/count");
+        const data = await res.json();
+        setCount(data.count);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserCount();
+  }, []);
+
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      try {
+        const res = await fetch(
+          "https://tajriba-a32v.onrender.com/api/resume/all"
+        );
+        const data = await res.json();
+        setResumes(data.resumes.length);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserCount();
+  }, []);
+
+  useEffect(() => {
+    const fetchOrderCount = async () => {
+      try {
+        const res = await fetch(
+          "https://tajriba-a32v.onrender.com/api/order/all"
+        );
+        const data = await res.json();
+        setBuyurtma(data.orders.length);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchOrderCount();
+  }, []);
 
   if (!user) return null;
 
@@ -38,6 +84,25 @@ function Profil() {
             <h2 className="user-name">{user.name}</h2>
             <p className="user-email">{user.email}</p>
           </div>
+        </div>
+
+        <div className="admin-panels">
+          {user.email === "tursunboyevakbarali807@gmail.com" ? (
+            <div className="main-page_a">
+              <div className="user-soni">
+                <p>Foydalanuvchilar</p>
+                <span>{count}</span>
+              </div>
+              <div className="user-soni">
+                <p>Repositori</p>
+                <span>{resumes}</span>
+              </div>
+              <div className="user-soni">
+                <p>Buyurtmalar</p>
+                <span>{buyurtma}</span>
+              </div>
+            </div>
+          ) : null}
         </div>
 
         <div className="actions-grid">

@@ -6,7 +6,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #111111;
-  --may-color: #4f21e7;
+  --scrol-color: #7b7b7b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,6 +18,8 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrol-color) transparent;
 }
 
 a {

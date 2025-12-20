@@ -1,19 +1,32 @@
 import "./buyurtmalar.css";
-import { FaTelegram } from "react-icons/fa";
+import { FaTelegram, FaClock } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
+interface BuyurtmaType {
+  _id: string;
+  creator: string;
+  creatorpic?: string;
+  title: string;
+  description: string;
+  budget: string;
+  tguserorder?: string;
+  createdAt: string;
+}
+
 function Buyurtmalar() {
-  const [buyurtma, setBuyurtma] = useState([]);
+  const [buyurtma, setBuyurtma] = useState<BuyurtmaType[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/order/all"); // /all endpoint
+        const res = await fetch(
+          "https://tajriba-a32v.onrender.com/api/order/all"
+        );
         const data = await res.json();
-        setBuyurtma(data.orders); // backenddan kelayotgan 'orders' property
-      } catch (err) {
-        console.error("Xatolik:", err);
+        setBuyurtma(data.orders);
+      } catch (error) {
+        console.error("Fetch error:", error);
       } finally {
         setLoading(false);
       }
@@ -80,6 +93,30 @@ function Buyurtmalar() {
               <FaTelegram />
               <p>Javob berish</p>
             </a>
+            <div className="crdata">
+              <p>
+                <FaClock />
+              </p>
+              <span>
+                {(() => {
+                  const now = new Date();
+                  const created = new Date(item.createdAt);
+                  const diffMs = now.getTime() - created.getTime();
+
+                  const diffSec = Math.floor(diffMs / 1000);
+                  const diffMin = Math.floor(diffSec / 60);
+                  const diffHour = Math.floor(diffMin / 60);
+                  const diffDay = Math.floor(diffHour / 24);
+                  const diffWeek = Math.floor(diffDay / 7);
+
+                  if (diffSec < 60) return `${diffSec}s`;
+                  if (diffMin < 60) return `${diffMin}m`;
+                  if (diffHour < 24) return `${diffHour}h`;
+                  if (diffDay < 7) return `${diffDay}d`;
+                  return `${diffWeek}w`;
+                })()}
+              </span>
+            </div>
           </div>
         ))}
       </div>

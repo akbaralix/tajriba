@@ -77,6 +77,32 @@
   grid-template-columns: 1fr;
   gap: 15px;
 }
+.main-page_a {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-soni {
+  background-color: #656565;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.user-soni p {
+  color: #eefbff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.user-soni span {
+  font-size: 25px;
+  font-weight: 700;
+}
 
 .action-item {
   display: flex;

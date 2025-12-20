@@ -20,7 +20,9 @@ function Mutahasislar() {
   useEffect(() => {
     const fetchResumes = async () => {
       try {
-        const response = await fetch("https://tajriba-a32v.onrender.com/api/resume/all");
+        const response = await fetch(
+          "https://tajriba-a32v.onrender.com/api/resume/all"
+        );
         if (!response.ok) throw new Error("Ma'lumotlarni olishda xatolik");
 
         const data = await response.json();
@@ -77,7 +79,7 @@ function Mutahasislar() {
               />
               <div className="about-user">
                 <h2>{item.username || "Anonim"}</h2>
-                <p>{item.soha || "Soha mavjud emas"}</p>
+                <p>{item.soha || "Mutahassis"}</p>
               </div>
             </div>
             <h2 className="buyurtma-discripton">{item.kasb}</h2>
@@ -99,4 +101,3 @@ function Mutahasislar() {
 }
 
 export default Mutahasislar;
-

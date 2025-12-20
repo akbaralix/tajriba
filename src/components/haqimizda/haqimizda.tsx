@@ -5,7 +5,6 @@ const AboutSection: React.FC = () => {
   return (
     <section className="about-wrapper">
       <div className="about-container">
-        {/* Header */}
         <div className="about-header">
           <span className="badge">Biz Haqimizda</span>
           <h2 className="main-title">
@@ -14,9 +13,7 @@ const AboutSection: React.FC = () => {
           </h2>
         </div>
 
-        {/* Asosiy Qism */}
         <div className="about-grid">
-          {/* Chap tomon: Vizual */}
           <div className="visual-box">
             <div className="blob"></div>
             <div className="image-card">
@@ -24,7 +21,6 @@ const AboutSection: React.FC = () => {
             </div>
           </div>
 
-          {/* O'ng tomon: Matnlar */}
           <div className="content-box">
             <ul className="values-list">
               <li className="value-item">

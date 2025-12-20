@@ -1,13 +1,19 @@
 import { FaGoogle } from "react-icons/fa";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../firebase";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 function Login() {
   const navigate = useNavigate();
 
+  let isSigningIn = false;
+
   const handleGoogleLogin = async () => {
+    if (isSigningIn) return;
+    isSigningIn = true;
+
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
@@ -19,28 +25,30 @@ function Login() {
         photo: user.photoURL,
       };
 
-      const res = await fetch(
-        "https://tajriba-a32v.onrender.com/api/user/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userData),
-        }
-      );
+      localStorage.setItem("userData", JSON.stringify(userData));
 
-      const savedUser = await res.json();
+      const res = await fetch("http://localhost:5000/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
 
-      localStorage.setItem("userData", JSON.stringify(savedUser));
+      if (!res.ok) {
+        throw new Error("Backend xato: " + res.status);
+      }
 
       navigate("/profil");
     } catch (error) {
-      console.error("Google login xatolik:", error);
-      alert("Kirishda xatolik yuz berdi. Iltimos qaytadan urinib ko'ring.");
+      console.error(error);
+      toast.error("Google orqali kirishda xatolik yuz berdi");
+    } finally {
+      isSigningIn = false;
     }
   };
 
   return (
     <div className="login-wrapper">
+      <ToastContainer />
       <div className="login-container">
         <div className="login-header">
           <div className="login-logo">T.</div>
