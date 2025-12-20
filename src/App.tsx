@@ -2,7 +2,7 @@ import Home from "./components/home/home";
 import Navbar from "./components/navbar/navbar";
 import Profil from "./components/profil/profil";
 import Buyurtmalar from "./components/buyurtmalar/buyurtmalar";
-import Create from "./components/create/create";
+import Create from "./components/create/repository-create/create";
 import Mutahasislar from "./components/mutaxassislar/mutaxassislar";
 import Login from "./components/login/login";
 import Haqimizda from "./components/haqimizda/haqimizda";

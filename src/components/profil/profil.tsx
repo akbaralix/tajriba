@@ -1,12 +1,19 @@
 import { useNavigate, Link } from "react-router-dom";
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
+=======
+import { useEffect } from "react";
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
 import "./profil.css";
 
 function Profil() {
   const navigate = useNavigate();
+<<<<<<< HEAD
   const [count, setCount] = useState("0");
   const [resumes, setResumes] = useState("0");
   const [buyurtma, setBuyurtma] = useState("0");
+=======
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
 
   const userData = localStorage.getItem("userData");
   const user = userData ? JSON.parse(userData) : null;
@@ -22,6 +29,7 @@ function Profil() {
     navigate("/login");
   };
 
+<<<<<<< HEAD
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
@@ -65,6 +73,8 @@ function Profil() {
     fetchOrderCount();
   }, []);
 
+=======
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   if (!user) return null;
 
   return (
@@ -86,6 +96,7 @@ function Profil() {
           </div>
         </div>
 
+<<<<<<< HEAD
         <div className="admin-panels">
           {user.email === "tursunboyevakbarali807@gmail.com" ? (
             <div className="main-page_a">
@@ -111,6 +122,14 @@ function Profil() {
             <span>Elon joylash</span>
           </Link>
 
+=======
+        <div className="actions-grid">
+          <Link title="Elon joylash" to="/create" className="action-item">
+            <div className="icon-circle">📄</div>
+            <span>Elon joylash</span>
+          </Link>
+
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
           {/* <Link title="Buyurtma berish" to="/buyurtma" className="action-item">
             <div className="icon-circle">💼</div>
             <span>Buyurtma joylash</span>

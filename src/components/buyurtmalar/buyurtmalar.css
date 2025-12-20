@@ -75,7 +75,11 @@
   border: 1px solid #444;
   padding: 5px 10px;
   border-radius: 8px;
+<<<<<<< HEAD
   /* width: 100px; */
+=======
+  width: 100px;
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -85,10 +89,17 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+<<<<<<< HEAD
   background-color: #333;
   color: #fff;
   border: 1px solid #555;
   padding: 12px 30px;
+=======
+  background-color: #333; /* qorong‘i kulrang */
+  color: #fff; /* oq matn */
+  border: 1px solid #555; /* yumshoq border */
+  padding: 12px 20px;
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   margin-top: 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -96,7 +107,11 @@
   transition: 0.3s ease;
 }
 .buyurtma-javob_btn:hover {
+<<<<<<< HEAD
   background-color: #444;
+=======
+  background-color: #444; /* hoverda accent rang (yashil) */
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   border-color: #575757;
 }
 .buyurtma-javob_btn svg {
@@ -104,6 +119,7 @@
   height: 20px;
 }
 
+<<<<<<< HEAD
 .crdata {
   display: flex;
   align-items: center;
@@ -115,6 +131,8 @@
   letter-spacing: 1px;
 }
 
+=======
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
 .buyurtma-narx-loader {
   width: 110px;
   height: 30px;
@@ -162,7 +180,11 @@
     font-size: 16px;
   }
   .buyurtma-narx {
+<<<<<<< HEAD
     font-size: 14px;
+=======
+    font-size: 18px;
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   }
   .buyurtma-discripton {
     font-size: 24px;

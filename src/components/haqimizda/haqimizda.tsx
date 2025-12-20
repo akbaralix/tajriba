@@ -5,6 +5,10 @@ const AboutSection: React.FC = () => {
   return (
     <section className="about-wrapper">
       <div className="about-container">
+<<<<<<< HEAD
+=======
+        {/* Header */}
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
         <div className="about-header">
           <span className="badge">Biz Haqimizda</span>
           <h2 className="main-title">
@@ -13,7 +17,13 @@ const AboutSection: React.FC = () => {
           </h2>
         </div>
 
+<<<<<<< HEAD
         <div className="about-grid">
+=======
+        {/* Asosiy Qism */}
+        <div className="about-grid">
+          {/* Chap tomon: Vizual */}
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
           <div className="visual-box">
             <div className="blob"></div>
             <div className="image-card">
@@ -21,6 +31,10 @@ const AboutSection: React.FC = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
+=======
+          {/* O'ng tomon: Matnlar */}
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
           <div className="content-box">
             <ul className="values-list">
               <li className="value-item">

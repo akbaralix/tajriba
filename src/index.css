@@ -6,7 +6,11 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #111111;
+<<<<<<< HEAD
   --scrol-color: #7b7b7b;
+=======
+  --may-color: #4f21e7;
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

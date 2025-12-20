@@ -1,4 +1,5 @@
 import "./buyurtmalar.css";
+<<<<<<< HEAD
 import { FaTelegram, FaClock } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
@@ -15,11 +16,19 @@ interface BuyurtmaType {
 
 function Buyurtmalar() {
   const [buyurtma, setBuyurtma] = useState<BuyurtmaType[]>([]);
+=======
+import { FaTelegram } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
+function Buyurtmalar() {
+  const [buyurtma, setBuyurtma] = useState([]);
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
+<<<<<<< HEAD
         const res = await fetch(
           "https://tajriba-a32v.onrender.com/api/order/all"
         );
@@ -27,6 +36,13 @@ function Buyurtmalar() {
         setBuyurtma(data.orders);
       } catch (error) {
         console.error("Fetch error:", error);
+=======
+        const res = await fetch("https://tajriba-a32v.onrender.com/api/order/all"); // /all endpoint
+        const data = await res.json();
+        setBuyurtma(data.orders); // backenddan kelayotgan 'orders' property
+      } catch (err) {
+        console.error("Xatolik:", err);
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
       } finally {
         setLoading(false);
       }
@@ -93,6 +109,7 @@ function Buyurtmalar() {
               <FaTelegram />
               <p>Javob berish</p>
             </a>
+<<<<<<< HEAD
             <div className="crdata">
               <p>
                 <FaClock />
@@ -117,6 +134,8 @@ function Buyurtmalar() {
                 })()}
               </span>
             </div>
+=======
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
           </div>
         ))}
       </div>
@@ -125,3 +144,4 @@ function Buyurtmalar() {
 }
 
 export default Buyurtmalar;
+

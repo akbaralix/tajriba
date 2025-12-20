@@ -50,13 +50,21 @@
   color: black;
 }
 .categories-section {
+<<<<<<< HEAD
   padding: 70px 0;
+=======
+  padding: 100px 0;
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
 }
 
 .section-title {
   text-align: center;
   font-size: 32px;
+<<<<<<< HEAD
   margin-bottom: 45px;
+=======
+  margin-bottom: 48px;
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
 }
 
 .categories-grid {

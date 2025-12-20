@@ -8,8 +8,11 @@ import "./login.css";
 function Login() {
   const navigate = useNavigate();
 
+<<<<<<< HEAD
   let isSigningIn = false;
 
+=======
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
   const handleGoogleLogin = async () => {
     if (isSigningIn) return;
     isSigningIn = true;
@@ -18,6 +21,7 @@ function Login() {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
+      // Profil sahifasidagi user.name va user.photo bilan moslashtirildi
       const userData = {
         uid: user.uid,
         name: user.displayName,
@@ -26,6 +30,7 @@ function Login() {
       };
 
       localStorage.setItem("userData", JSON.stringify(userData));
+<<<<<<< HEAD
 
       const res = await fetch("http://localhost:5000/api/user/login", {
         method: "POST",
@@ -43,12 +48,21 @@ function Login() {
       toast.error("Google orqali kirishda xatolik yuz berdi");
     } finally {
       isSigningIn = false;
+=======
+      navigate("/profil"); // Login bo'lgach profilga yuborish mantiqan to'g'riroq
+    } catch (error) {
+      console.error("Google login xatolik:", error);
+      alert("Kirishda xatolik yuz berdi. Iltimos qaytadan urinib ko'ring.");
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
     }
   };
 
   return (
     <div className="login-wrapper">
+<<<<<<< HEAD
       <ToastContainer />
+=======
+>>>>>>> 744f8b1935d50df70c25cc807ce57172e9e3c11b
       <div className="login-container">
         <div className="login-header">
           <div className="login-logo">T.</div>
