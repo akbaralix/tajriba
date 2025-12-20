@@ -18,7 +18,7 @@ const AboutSection: React.FC = () => {
           <div className="visual-box">
             <div className="blob"></div>
             <div className="image-card">
-              <img src={placholderImg} alt="Bizning platforma rasmi" />
+              <img src={placholderImg} alt={placholderImg} />
             </div>
           </div>
 
@@ -100,3 +100,4 @@ const AboutSection: React.FC = () => {
 };
 
 export default AboutSection;
+
