@@ -17,7 +17,6 @@ const AboutSection: React.FC = () => {
         <div className="about-grid">
           <div className="visual-box">
             <div className="image-card">
-              <img src={placholderImg} alt={placholderImg} />
               <img src={placholderImg} alt="Bizning platforma rasmi" />
             </div>
           </div>

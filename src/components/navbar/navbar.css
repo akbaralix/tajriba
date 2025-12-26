@@ -103,28 +103,29 @@ li {
   backdrop-filter: blur(20px);
   background-color: #0f0f0f8e;
   backdrop-filter: blur(20px);
-  padding: 0px 20px;
+  padding: 0px 10px;
   border-top: 1px solid #232323;
   width: 100%;
-  z-index: 10;
+  z-index: 100;
 }
 .mb-nav {
-  display: flex;
-  flex-direction: column;
-  padding: 5px 12px;
+  padding: 10px 12px;
 }
 .mb-nav ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  font-size: 30px;
-  font-weight: 600;
+}
+
+.mb-nav ul svg {
+  height: 2.2rem;
+  width: 2.2rem;
+}
+.mobile-navbar-active {
 }
 .mobile-navbar-active svg {
   color: #afafaf;
-  width: 34px;
-  height: 34px;
   transition: 0.1s ease;
 }
 
