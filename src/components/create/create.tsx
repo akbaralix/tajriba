@@ -205,7 +205,7 @@ function Create() {
                 type="text"
                 inputMode="numeric"
                 placeholder="Masalan: 500$"
-                maxLength={10}
+                maxLength={20}
                 value={orderData.budget}
                 onChange={(e) =>
                   setOrderData({ ...orderData, budget: e.target.value })

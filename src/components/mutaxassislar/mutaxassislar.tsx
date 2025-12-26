@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./mutaxassislar.css";
-import { FaTelegram } from "react-icons/fa6";
+import { FaTelegram, FaSearchengin } from "react-icons/fa6";
 
 interface Resume {
   _id: string;
@@ -16,6 +16,13 @@ interface Resume {
 function Mutahasislar() {
   const [mutaxassislar, setMutaxassislar] = useState<Resume[]>([]);
   const [loading, setLoading] = useState(true);
+  const [inputValue, setInputValue] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const filteredMutahasislar = mutaxassislar.filter((item) =>
+    (item.kasb ?? "").toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   useEffect(() => {
     const fetchResumes = async () => {
@@ -69,8 +76,39 @@ function Mutahasislar() {
 
   return (
     <div>
+      <div className="search">
+        <input
+          type="search"
+          placeholder="Qidiring"
+          value={inputValue}
+          onChange={(e) => {
+            const value = e.target.value;
+            setInputValue(value);
+
+            if (value.trim() === "") {
+              setSearchQuery("");
+              setHasSearched(false);
+            }
+          }}
+        />
+
+        <button
+          onClick={() => {
+            setSearchQuery(inputValue);
+            setHasSearched(true);
+          }}
+        >
+          <FaSearchengin />
+        </button>
+      </div>
+      {hasSearched && filteredMutahasislar.length === 0 && (
+        <p style={{ textAlign: "center", marginTop: 20 }}>
+          🔍 Hech narsa topilmadi
+        </p>
+      )}
+
       <div className="buyurtmalarim">
-        {mutaxassislar.map((item) => (
+        {filteredMutahasislar.map((item) => (
           <div className="buyurtmalar" key={item._id}>
             <div className="user-a">
               <img

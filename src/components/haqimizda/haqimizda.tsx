@@ -16,9 +16,9 @@ const AboutSection: React.FC = () => {
 
         <div className="about-grid">
           <div className="visual-box">
-            <div className="blob"></div>
             <div className="image-card">
               <img src={placholderImg} alt={placholderImg} />
+              <img src={placholderImg} alt="Bizning platforma rasmi" />
             </div>
           </div>
 
@@ -68,10 +68,11 @@ const AboutSection: React.FC = () => {
                   </svg>
                 </div>
                 <div className="value-text">
-                  <h4>Xavfsiz To'lov</h4>
+                  <h4>Xavfsiz Aloqa</h4>
                   <p>
-                    Ish qabul qilinmaguncha pulingiz platforma himoyasida
-                    bo'ladi.
+                    Ish beruvchi yoki mutahassis bilan{" "}
+                    <span style={{ color: "#088efcff" }}>Telegram</span> da
+                    Xavfsiz aloqa qiling.
                   </p>
                 </div>
               </li>
@@ -79,11 +80,10 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Stats Panel */}
         <div className="stats-panel">
           <div className="stat-card">
             <span className="stat-value">5,000+</span>
-            <span className="stat-label">Juniorlar</span>
+            <span className="stat-label">Foydalanuvchi</span>
           </div>
           <div className="stat-card">
             <span className="stat-value">1,200+</span>
@@ -100,4 +100,3 @@ const AboutSection: React.FC = () => {
 };
 
 export default AboutSection;
-

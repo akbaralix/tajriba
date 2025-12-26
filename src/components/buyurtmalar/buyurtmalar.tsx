@@ -95,7 +95,7 @@ function Buyurtmalar() {
             </a>
             <div className="crdata">
               <p>
-                <FaClock />
+                <FaClock className="FaClock" />
               </p>
               <span>
                 {(() => {

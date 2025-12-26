@@ -16,7 +16,8 @@ function Navbar() {
     <div>
       <div className="header">
         <NavLink className="Logo" to="/">
-          Tajriba
+          <h1> Tajriba</h1>
+          <p>beta</p>
         </NavLink>
 
         <nav className="navbar">
@@ -98,7 +99,9 @@ function Navbar() {
             <li>
               <NavLink
                 to="/"
-                className={({ isActive }) => (isActive ? "navbar-active" : "")}
+                className={({ isActive }) =>
+                  isActive ? "mobile-navbar-active" : ""
+                }
               >
                 <FaHome />
               </NavLink>
@@ -106,7 +109,9 @@ function Navbar() {
             <li>
               <NavLink
                 to="/buyurtmalar"
-                className={({ isActive }) => (isActive ? "navbar-active" : "")}
+                className={({ isActive }) =>
+                  isActive ? "mobile-navbar-active" : ""
+                }
               >
                 <FaClipboardList />
               </NavLink>
@@ -114,7 +119,9 @@ function Navbar() {
             <li>
               <NavLink
                 to="/mutaxassislar"
-                className={({ isActive }) => (isActive ? "navbar-active" : "")}
+                className={({ isActive }) =>
+                  isActive ? "mobile-navbar-active" : ""
+                }
               >
                 <FaUserCog />
               </NavLink>
@@ -122,7 +129,9 @@ function Navbar() {
             <li>
               <NavLink
                 to="/haqimizda"
-                className={({ isActive }) => (isActive ? "navbar-active" : "")}
+                className={({ isActive }) =>
+                  isActive ? "mobile-navbar-active" : ""
+                }
               >
                 <FaInfoCircle />
               </NavLink>
@@ -132,7 +141,7 @@ function Navbar() {
                 <NavLink
                   to="/profil"
                   className={({ isActive }) =>
-                    isActive ? "navbar-active" : ""
+                    isActive ? "mobile-navbar-active" : ""
                   }
                 >
                   <FaUser />
@@ -141,7 +150,7 @@ function Navbar() {
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
-                    isActive ? "navbar-active" : ""
+                    isActive ? "mobile-navbar-active" : ""
                   }
                 >
                   <FaUser />

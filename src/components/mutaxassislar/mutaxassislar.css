@@ -78,7 +78,43 @@
   border: none;
   border-radius: 8px;
 }
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #2b2b2b;
+  max-width: 800px;
+  height: 45px;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.search input {
+  height: 45px;
+  font-size: 18px;
+  padding: 0 12px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #2c2c2c;
+}
+.search input::placeholder {
+  color: #888;
+  font-size: 19px;
+}
 
+.search button {
+  width: 80px;
+  height: 45px;
+  font-size: 25px;
+  background-color: #ffffff14;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media (max-width: 770px) {
   .buyurtmalar-loader {
     padding: 20px;
@@ -90,7 +126,7 @@
   }
 
   .buyurtmalar-loader > h2.loader-text {
-    height: 20px; /* Mobilga mosroq kichikroq */
+    height: 20px;
   }
 
   .loader-btn {

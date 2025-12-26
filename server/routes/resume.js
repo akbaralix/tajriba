@@ -32,5 +32,19 @@ router.get("/all", async (req, res) => {
     res.status(500).json({ message: "Server xatolik" });
   }
 });
+// Resume o'chirish
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedResume = await Resume.findByIdAndDelete(id);
+    if (!deletedResume) {
+      return res.status(404).json({ message: "Resume topilmadi" });
+    }
+    res.json({ message: "Resume o‘chirildi", resume: deletedResume });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server xatolik" });
+  }
+});
 
 export default router;

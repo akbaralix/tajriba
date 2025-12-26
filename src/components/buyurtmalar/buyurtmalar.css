@@ -33,6 +33,7 @@
   object-fit: cover;
   border: 1px solid #333;
 }
+
 .about-user {
   display: flex;
   flex-direction: column;
@@ -108,6 +109,9 @@
   width: 20px;
   height: 20px;
 }
+.FaClock {
+  margin-top: 5px;
+}
 
 .crdata {
   display: flex;
@@ -115,7 +119,6 @@
   justify-content: flex-end;
   gap: 5px;
   margin-top: 20px;
-  border-radius: 8px;
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -156,9 +159,7 @@
   .buyurtmalar {
     padding: 20px;
   }
-  .user-a {
-    margin-top: 20px;
-  }
+
   .user-a img {
     width: 60px;
     height: 60px;
@@ -175,5 +176,9 @@
   }
   .buyurtma-javob_btn {
     font-size: 16px;
+  }
+  .crdata {
+    margin-top: 10px;
+    margin-bottom: -10px;
   }
 }
