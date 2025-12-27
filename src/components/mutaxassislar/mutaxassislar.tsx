@@ -38,7 +38,7 @@ function Mutahasislar() {
         const data = await response.json();
         setMutaxassislar(data.resumes || []);
 
-        // Har bir resume uchun view oshirish
+        // Har bir resume ko'rilganini serverda qayd etish
         await Promise.all(
           data.resumes.map((resume: Resume) =>
             fetch(`https://tajriba-a32v.onrender.com/api/resume/${resume._id}`)
@@ -54,6 +54,29 @@ function Mutahasislar() {
 
     fetchResumes();
   }, []);
+
+  // ULASHISH FUNKSIYASI (SEND TUGMASI UCHUN)
+  const handleShare = async (id: string) => {
+    const shareUrl = `${window.location.origin}/resume/${id}`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Mutaxassis rezyumesi",
+          url: shareUrl,
+        });
+      } catch (err) {
+        console.log("Share error:", err);
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        alert("Havola nusxalandi: " + shareUrl);
+      } catch (err) {
+        console.error("Copy error:", err);
+      }
+    }
+  };
 
   if (loading) {
     return (
@@ -119,40 +142,47 @@ function Mutahasislar() {
 
       <div className="buyurtmalarim">
         {filteredMutahasislar.map((item) => (
-          <div className="buyurtmalar" key={item._id}>
-            <div className="user-a">
-              <img
-                src={item.userpic || "/default-user.png"}
-                alt={item.username || "Anonim"}
-              />
-              <div className="about-user">
-                <h2>{item.username || "Anonim"}</h2>
-                <p>{item.soha || "Mutahassis"}</p>
+          <a
+            href={`/resume/${item._id}`}
+            key={item._id}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <div className="buyurtmalar" key={item._id}>
+              <div className="user-a">
+                <img
+                  src={item.userpic || "/default-user.png"}
+                  alt={item.username || "Anonim"}
+                />
+                <div className="about-user">
+                  <h2>{item.username || "Anonim"}</h2>
+                  <p>{item.soha || "Mutahassis"}</p>
+                </div>
               </div>
-            </div>
-            <h2 className="buyurtma-discripton">{item.kasb}</h2>
-            <p className="buyurtma-title">{item.bio}</p>
+              <h2 className="buyurtma-discripton">{item.kasb}</h2>
+              <p className="buyurtma-title">{item.bio}</p>
 
-            <button
-              onClick={() =>
-                window.open(`https://t.me/${item.tguser}`, "_blank")
-              }
-              className="buyurtma-javob_btn"
-            >
-              <FaTelegram /> <p>Javob berish</p>
-            </button>
-            <div className="buyurtma-actions">
-              <div className="eye">
-                <IoMdEye />
-                <span>{item.views || 0}</span>
-              </div>
-              <div className="sen">
-                <button>
-                  <LuSend />
-                </button>
+              <button
+                onClick={() =>
+                  window.open(`https://t.me/${item.tguser}`, "_blank")
+                }
+                className="buyurtma-javob_btn"
+              >
+                <FaTelegram /> <p>Javob berish</p>
+              </button>
+              <div className="buyurtma-actions">
+                <div className="eye">
+                  <IoMdEye />
+                  <span>{item.views || 0}</span>
+                </div>
+                <div className="sen">
+                  {/* Send tugmasiga share funksiyasini uladik */}
+                  <button onClick={() => handleShare(item._id)}>
+                    <LuSend />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

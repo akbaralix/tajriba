@@ -32,18 +32,29 @@ router.get("/all", async (req, res) => {
     res.status(500).json({ message: "Server xatolik" });
   }
 });
-// Resume o'chirish
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+// Resume ko‘rildi → views +1
+router.get("/:id", async (req, res) => {
   try {
-    const deletedResume = await Resume.findByIdAndDelete(id);
-    if (!deletedResume) {
-      return res.status(404).json({ message: "Resume topilmadi" });
+    const { id } = req.params;
+    const { increment } = req.query; // ?increment=true qismini tutib olish
+
+    let resume;
+    if (increment === "true") {
+      // Views-ni oshirish va ma'lumotni qaytarish
+      resume = await Resume.findByIdAndUpdate(
+        id,
+        { $inc: { views: 1 } },
+        { new: true }
+      );
+    } else {
+      // Shunchaki ma'lumotni o'zini olish
+      resume = await Resume.findById(id);
     }
-    res.json({ message: "Resume o‘chirildi", resume: deletedResume });
+
+    if (!resume) return res.status(404).json({ message: "Topilmadi" });
+    res.json(resume);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server xatolik" });
+    res.status(500).json({ message: "Server xatosi" });
   }
 });
 

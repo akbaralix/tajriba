@@ -39,21 +39,5 @@ router.get("/all", async (req, res) => {
     res.status(500).json({ message: "Server xatolik" });
   }
 });
-// Resume ko‘rildi → views +1
-router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const resume = await Resume.findByIdAndUpdate(
-      id,
-      { $inc: { views: 1 } }, // views sonini oshirish
-      { new: true } // yangilangan document qaytaradi
-    );
-    if (!resume) return res.status(404).json({ message: "Resume topilmadi" });
-    res.json(resume);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server xatolik" });
-  }
-});
 
 export default router;
