@@ -27,11 +27,14 @@ function Login() {
 
       localStorage.setItem("userData", JSON.stringify(userData));
 
-      const res = await fetch("https://tajriba-a32v.onrender.com/api/user/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-      });
+      const res = await fetch(
+        "https://tajriba-a32v.onrender.com/api/user/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Backend xato: " + res.status);
@@ -80,4 +83,3 @@ function Login() {
 }
 
 export default Login;
-

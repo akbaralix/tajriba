@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./mutaxassislar.css";
 import { FaTelegram, FaSearchengin } from "react-icons/fa6";
+import { IoMdEye } from "react-icons/io";
+import { LuSend } from "react-icons/lu";
 
 interface Resume {
   _id: string;
@@ -11,6 +13,7 @@ interface Resume {
   username?: string;
   soha?: string;
   userpic?: string;
+  views?: number;
 }
 
 function Mutahasislar() {
@@ -34,6 +37,13 @@ function Mutahasislar() {
 
         const data = await response.json();
         setMutaxassislar(data.resumes || []);
+
+        // Har bir resume uchun view oshirish
+        await Promise.all(
+          data.resumes.map((resume: Resume) =>
+            fetch(`https://tajriba-a32v.onrender.com/api/resume/${resume._id}`)
+          )
+        );
       } catch (error) {
         console.error("Fetch error:", error);
         setMutaxassislar([]);
@@ -131,6 +141,17 @@ function Mutahasislar() {
             >
               <FaTelegram /> <p>Javob berish</p>
             </button>
+            <div className="buyurtma-actions">
+              <div className="eye">
+                <IoMdEye />
+                <span>{item.views || 0}</span>
+              </div>
+              <div className="sen">
+                <button>
+                  <LuSend />
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>

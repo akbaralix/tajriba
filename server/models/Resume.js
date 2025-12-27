@@ -8,6 +8,7 @@ const resumeSchema = new mongoose.Schema({
   username: { type: String },
   userpic: { type: String },
   title: { type: String },
+  views: { type: Number, default: 0 },
 });
 
 const Resume = mongoose.model("Resume", resumeSchema);
