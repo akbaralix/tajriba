@@ -85,6 +85,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 200px;
   gap: 10px;
   background-color: #333;
   color: #fff; /* oq matn */
@@ -113,10 +114,20 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 5px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  gap: 10px;
   margin-top: 20px;
   font-weight: 500;
   letter-spacing: 1px;
+}
+
+.data {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
 }
 
 .buyurtma-narx-loader {
@@ -132,7 +143,7 @@
 }
 .loader-buyurtma-btn {
   background: linear-gradient(90deg, #2b2b2b 25%, #3a3a3a 50%, #2b2b2b 75%);
-  width: 100%;
+  width: 200px;
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite linear;
   height: 45px;
@@ -172,9 +183,5 @@
   }
   .buyurtma-javob_btn {
     font-size: 16px;
-  }
-  .crdata {
-    margin-top: 10px;
-    margin-bottom: -10px;
   }
 }

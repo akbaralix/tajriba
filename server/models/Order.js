@@ -9,6 +9,7 @@ const orderSchema = new mongoose.Schema(
     description: { type: String, required: true },
     budget: { type: String, required: true },
     tguserorder: { type: String }, // optional, Telegram username
+    views: { type: Number, default: 0 },
   },
   { timestamps: true }
 );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaTelegram, FaSearchengin, FaCopy } from "react-icons/fa6";
+import { FaTelegram, FaSearchengin, FaCopy, FaClock } from "react-icons/fa6";
 import { IoMdEye } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,6 +15,7 @@ interface Resume {
   username?: string;
   soha?: string;
   userpic?: string;
+  createdAt: string;
   views?: number;
 }
 
@@ -73,11 +74,28 @@ function Mutahasislar() {
     } else {
       try {
         await navigator.clipboard.writeText(shareUrl);
-        alert("Havola nusxalandi: " + shareUrl);
       } catch (err) {
         console.error("Copy error:", err);
       }
     }
+  };
+
+  const formatTime = (createdAt: string) => {
+    const now = new Date();
+    const created = new Date(createdAt);
+    const diffMs = now.getTime() - created.getTime();
+
+    const diffSec = Math.floor(diffMs / 1000);
+    const diffMin = Math.floor(diffSec / 60);
+    const diffHour = Math.floor(diffMin / 60);
+    const diffDay = Math.floor(diffHour / 24);
+    const diffWeek = Math.floor(diffDay / 7);
+
+    if (diffSec < 60) return `${diffSec}s`;
+    if (diffMin < 60) return `${diffMin}m`;
+    if (diffHour < 24) return `${diffHour}h`;
+    if (diffDay < 7) return `${diffDay}d`;
+    return `${diffWeek}w`;
   };
 
   if (loading) {
@@ -145,12 +163,12 @@ function Mutahasislar() {
 
       <div className="buyurtmalarim">
         {filteredMutahasislar.map((item) => (
-          <a
-            href={`/resume/${item._id}`}
-            key={item._id}
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <div className="buyurtmalar" key={item._id}>
+          <div className="buyurtmalar" key={item._id}>
+            <a
+              href={`/resume/${item._id}`}
+              key={item._id}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               <div className="user-a">
                 <img
                   src={item.userpic || "/default-user.png"}
@@ -163,49 +181,49 @@ function Mutahasislar() {
               </div>
               <h2 className="buyurtma-discripton">{item.kasb}</h2>
               <p className="buyurtma-title">{item.bio}</p>
+            </a>
 
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  window.open(`https://t.me/${item.tguser}`, "_blank");
-                }}
-                className="buyurtma-javob_btn"
-              >
-                <FaTelegram /> <p>Javob berish</p>
-              </button>
-              <div className="buyurtma-actions">
-                <div className="eye">
-                  <IoMdEye />
-                  <span>{item.views || 0}</span>
-                </div>
-                <div className="send-btn">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      handleShare(item._id);
-                    }}
-                  >
-                    <LuSend />
-                  </button>
-                </div>
-                <div className="copy-btn">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      const shareUrl = `${window.location.origin}/resume/${item._id}`;
-                      navigator.clipboard.writeText(shareUrl);
-                      toast.success("Havola nusxalandi");
-                    }}
-                  >
-                    <FaCopy />
-                  </button>
-                </div>
+            <button
+              onClick={() => {
+                window.open(`https://t.me/${item.tguser}`, "_blank");
+              }}
+              className="buyurtma-javob_btn"
+            >
+              <FaTelegram /> <p>Javob berish</p>
+            </button>
+            <div className="buyurtma-actions">
+              <div className="eye">
+                <IoMdEye />
+                <span>{item.views || 0}</span>
+              </div>
+              {/* <div className="data">
+                <p>
+                  <FaClock className="FaClock" />
+                </p>
+                <span>{formatTime(item.createdAt)}</span>
+              </div> */}
+              <div className="send-btn">
+                <button
+                  onClick={() => {
+                    handleShare(item._id);
+                  }}
+                >
+                  <LuSend />
+                </button>
+              </div>
+              <div className="copy-btn">
+                <button
+                  onClick={() => {
+                    const shareUrl = `${window.location.origin}/resume/${item._id}`;
+                    navigator.clipboard.writeText(shareUrl);
+                    toast.success("Havola nusxalandi");
+                  }}
+                >
+                  <FaCopy />
+                </button>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>

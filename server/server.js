@@ -14,8 +14,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/resume", resumeRoutes);
-app.use("/api/order", orderRoutes);
 app.use("/api/user", usersRoutes);
+app.use("/api/order", orderRoutes);
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "dist")));
