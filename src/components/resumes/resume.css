@@ -27,7 +27,7 @@
 .resume-card-detail {
   background: #1e1e1e;
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px;
   border: 1px solid #333;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -44,7 +44,7 @@
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #0088cc;
+  border: 2px solid #ffffff;
 }
 
 .detail-info h1 {
@@ -58,7 +58,6 @@
 }
 
 .detail-kasb {
-  color: #0088cc;
   font-size: 20px;
   margin-bottom: 15px;
 }
@@ -68,7 +67,7 @@
   color: #ddd;
   font-size: 16px;
   background: #252525;
-  padding: 15px;
+  padding: 10px;
   border-radius: 12px;
 }
 
@@ -82,13 +81,13 @@
 .detail-views {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   color: #777;
   font-size: 14px;
 }
 
 .detail-tg-btn {
-  background: #0088cc;
+  background: #333;
   color: white;
   border: none;
   padding: 15px;
@@ -104,7 +103,7 @@
 }
 
 .detail-tg-btn:hover {
-  background: #00aaff;
+  background: #3f4142;
 }
 
 .loader-center {

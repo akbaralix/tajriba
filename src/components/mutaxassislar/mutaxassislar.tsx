@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import "./mutaxassislar.css";
-import { FaTelegram, FaSearchengin } from "react-icons/fa6";
+import { FaTelegram, FaSearchengin, FaCopy } from "react-icons/fa6";
 import { IoMdEye } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
+import { ToastContainer, toast } from "react-toastify";
+
+import "./mutaxassislar.css";
 
 interface Resume {
   _id: string;
@@ -62,7 +64,7 @@ function Mutahasislar() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Mutaxassis rezyumesi",
+          title: "Mutahassis Tavsifi",
           url: shareUrl,
         });
       } catch (err) {
@@ -109,6 +111,7 @@ function Mutahasislar() {
 
   return (
     <div>
+      <ToastContainer />
       <div className="search">
         <input
           type="search"
@@ -162,9 +165,11 @@ function Mutahasislar() {
               <p className="buyurtma-title">{item.bio}</p>
 
               <button
-                onClick={() =>
-                  window.open(`https://t.me/${item.tguser}`, "_blank")
-                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(`https://t.me/${item.tguser}`, "_blank");
+                }}
                 className="buyurtma-javob_btn"
               >
                 <FaTelegram /> <p>Javob berish</p>
@@ -174,10 +179,28 @@ function Mutahasislar() {
                   <IoMdEye />
                   <span>{item.views || 0}</span>
                 </div>
-                <div className="sen">
-                  {/* Send tugmasiga share funksiyasini uladik */}
-                  <button onClick={() => handleShare(item._id)}>
+                <div className="send-btn">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleShare(item._id);
+                    }}
+                  >
                     <LuSend />
+                  </button>
+                </div>
+                <div className="copy-btn">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      const shareUrl = `${window.location.origin}/resume/${item._id}`;
+                      navigator.clipboard.writeText(shareUrl);
+                      toast.success("Havola nusxalandi");
+                    }}
+                  >
+                    <FaCopy />
                   </button>
                 </div>
               </div>

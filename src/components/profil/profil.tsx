@@ -2,6 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
+import { IoMdEye } from "react-icons/io";
 
 import Userpic from "../../../public/user-profilpic.png";
 
@@ -16,6 +17,7 @@ interface Resume {
   username?: string;
   soha?: string;
   userpic?: string;
+  views?: number;
 }
 
 function Profil() {
@@ -91,8 +93,6 @@ function Profil() {
     fetchOrderCount();
   }, []);
 
-  // FILTR: Serverdan kelgan barcha resumes ichidan faqat shu userga tegishlisini ajratish
-  // Firebase/Auth holatida ko'pincha user.uid yoki user.userId ishlatiladi
   const myOwnResumes = resumes.filter(
     (item) => item.userId === user?.uid || item.userId === user?.userId
   );
@@ -229,6 +229,10 @@ function Profil() {
               >
                 <p>Javob berish</p>
               </button>
+              <div className="my-resumes-views">
+                <IoMdEye />
+                <span>{item.views || 0}</span>
+              </div>
             </div>
           ))
         ) : (
