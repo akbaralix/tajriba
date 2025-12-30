@@ -32,7 +32,7 @@ function OrderDetail() {
         const isViewed = localStorage.getItem(storageKey);
 
         // MUHIM: /api/resume/ emas, /api/order/ bo'lishi shart!
-        let url = `http://localhost:5000/api/order/${id}`;
+        let url = `https://tajriba-a32v.onrender.com/api/order/${id}`;
 
         if (!isViewed) {
           url += "?increment=true";
@@ -129,3 +129,5 @@ function OrderDetail() {
 }
 
 export default OrderDetail;
+
+
