@@ -98,6 +98,7 @@ li {
 .mobile-navbar {
   display: none;
   position: fixed;
+  z-index: 1000;
   bottom: 0;
   left: 0;
   backdrop-filter: blur(20px);
@@ -106,7 +107,6 @@ li {
   padding: 0px 10px;
   border-top: 1px solid #232323;
   width: 100%;
-  z-index: 100;
 }
 .mb-nav {
   padding: 10px 12px;
@@ -122,8 +122,7 @@ li {
   height: 2.2rem;
   width: 2.2rem;
 }
-.mobile-navbar-active {
-}
+
 .mobile-navbar-active svg {
   color: #afafaf;
   transition: 0.1s ease;

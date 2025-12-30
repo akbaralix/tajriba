@@ -3,6 +3,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../firebase";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import tajriba from ".././../../public/stickerok.png";
 import "./login.css";
 
 function Login() {
@@ -54,7 +55,9 @@ function Login() {
       <ToastContainer />
       <div className="login-container">
         <div className="login-header">
-          <div className="login-logo">T.</div>
+          <div className="login-logo">
+            <img src={tajriba} alt="" />
+          </div>
           <h1>Xush kelibsiz!</h1>
           <p>
             Tajriba.uz platformasiga kirish va o'z faoliyatingizni boshlash

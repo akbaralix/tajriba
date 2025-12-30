@@ -66,7 +66,7 @@ function OrderDetail() {
 
   return (
     <div className="detail-container">
-      <button className="back-btn" onClick={() => navigate(-1)}>
+      <button className="back-btn" onClick={() => navigate("/buyurtmalar")}>
         <FaArrowLeft /> Orqaga
       </button>
 
@@ -120,7 +120,7 @@ function OrderDetail() {
               window.open(`https://t.me/${tg}`, "_blank");
             }}
           >
-            <FaTelegram /> Bog'lanish
+            <FaTelegram /> <span>Bog'lanish</span>
           </button>
         </div>
       </div>

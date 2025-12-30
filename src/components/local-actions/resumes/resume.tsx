@@ -66,7 +66,7 @@ function ResumeDetail() {
 
   return (
     <div className="detail-container">
-      <button className="back-btn" onClick={() => navigate(-1)}>
+      <button className="back-btn" onClick={() => navigate("/mutaxassislar")}>
         <FaArrowLeft /> Orqaga
       </button>
 

@@ -145,6 +145,78 @@
   align-items: center;
   gap: 0.2rem;
 }
+.open-main_menu {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  z-index: 15;
+}
+.open-main_menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+.menu-actions {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 15px;
+  border-radius: 15px;
+  top: 60px;
+  right: 15px;
+  background: #1b1b1b;
+  z-index: 15;
+}
+.menu-actions button {
+  background: none;
+  display: flex;
+  gap: 10px;
+  border: none;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+.menu-actions button:hover {
+  background-color: #ffffff14;
+}
+.report-actions {
+  position: absolute;
+  background-color: #1b1b1b;
+
+  border-radius: 15px;
+  z-index: 100;
+}
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px 15px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 15px;
+}
+.reports-text {
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  padding: 8px 12px;
+}
+.reports-text:hover {
+  background-color: #ffffff14;
+}
 
 @media (max-width: 770px) {
   .buyurtmalar-loader {

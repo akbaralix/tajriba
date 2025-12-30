@@ -4,8 +4,6 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import { IoMdEye } from "react-icons/io";
 
-import Userpic from "../../../public/user-profilpic.png";
-
 import "./profil.css";
 
 interface Resume {
@@ -150,8 +148,8 @@ function Profil() {
           <div className="user-card">
             <div className="user-avatar-wrapper">
               <img
-                src={user.photo || user.photoURL || Userpic}
-                alt="User"
+                src={user.photo || user.photoURL}
+                alt="Foydalanuvchi"
                 className="user-avatar"
               />
               <div className="status-badge"></div>
