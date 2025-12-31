@@ -28,11 +28,9 @@ function Mutahasislar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [hasSearched, setHasSearched] = useState(false);
 
-  // Qaysi menyu yoki report ochiqligini saqlash
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [report, setReport] = useState<string | null>(null);
 
-  // Faqat bitta ref ishlatamiz, u hozirgi ochiq elementga (menu yoki report) bog'lanadi
   const activeElementRef = useRef<HTMLDivElement>(null);
 
   const filteredMutahasislar = mutaxassislar.filter((item) =>

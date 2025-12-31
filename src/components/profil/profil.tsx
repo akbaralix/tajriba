@@ -67,7 +67,6 @@ function Profil() {
         const data = await response.json();
         setResumes(data.resumes || []);
       } catch (error) {
-        console.error("Fetch error:", error);
         setResumes([]);
       }
     };

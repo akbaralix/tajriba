@@ -27,8 +27,8 @@
   gap: 10px;
 }
 .user-a img {
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid #333;
@@ -40,6 +40,11 @@
   line-height: 1.4;
   margin-left: 10px;
 }
+.about-user h2 {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+}
 .about-user p {
   width: fit-content;
   background-color: #504f56;
@@ -47,7 +52,7 @@
   padding: 3px 15px;
   color: #fff;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 13px;
   border-radius: 8px;
 }
 
@@ -168,8 +173,8 @@
   }
 
   .user-a img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
   .user-a h2 {
     font-size: 16px;

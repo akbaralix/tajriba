@@ -5,7 +5,8 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { LuSend } from "react-icons/lu";
 import { FaCopy } from "react-icons/fa";
 import { MdOutlineReport } from "react-icons/md";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+
 import { useEffect, useState } from "react";
 
 interface BuyurtmaType {
@@ -20,7 +21,6 @@ interface BuyurtmaType {
   views?: number;
 }
 
-// User interfeysi (Shikoyat yuborish uchun)
 interface UserType {
   name: string;
 }
@@ -31,8 +31,6 @@ function Buyurtmalar() {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [report, setReport] = useState<string | null>(null);
 
-  // User ma'lumotlarini olish (Localstorage yoki contextdan)
-  // Agar backenddan kelmasa, default qiymat qo'yildi
   const user: UserType = JSON.parse(
     localStorage.getItem("user") || '{"name": "Foydalanuvchi"}'
   );
@@ -46,7 +44,7 @@ function Buyurtmalar() {
           "https://tajriba-a32v.onrender.com/api/order/all"
         );
         const data = await res.json();
-        setBuyurtma(data.orders || []); // Agar data.orders bo'lmasa bo'sh array
+        setBuyurtma(data.orders || []);
       } catch (error) {
         console.error("Fetch error:", error);
       } finally {
@@ -56,6 +54,27 @@ function Buyurtmalar() {
 
     fetchOrders();
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (openMenuId) {
+        const target = event.target as HTMLElement;
+
+        if (
+          !target.closest(".menu-actions") &&
+          !target.closest(".open-main_menu")
+        ) {
+          setOpenMenuId(null);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [openMenuId]);
 
   // SHIKOYAT YUBORISH
   const handleReportSubmit = (text: string) => {
@@ -73,7 +92,7 @@ function Buyurtmalar() {
       });
     }
     toast.info("Shikoyatingiz qabul qilindi. Tez orada ko'rib chiqamiz.");
-    setReport(null); // Oynani yopish
+    setReport(null);
   };
 
   const handleShare = async (id: string) => {
@@ -150,6 +169,7 @@ function Buyurtmalar() {
 
   return (
     <div>
+      <ToastContainer />
       <div className="search">
         <input type="search" placeholder="Qidiring" />
         <button>
@@ -236,7 +256,6 @@ function Buyurtmalar() {
             {report === item._id && (
               <div className="report-actions">
                 <div className="report-form">
-                  <h4 style={{ marginBottom: "10px" }}>Shikoyat sababi:</h4>
                   <div
                     className="reports-text"
                     onClick={() => handleReportSubmit("Noqonuniy kontent")}

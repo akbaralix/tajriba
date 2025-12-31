@@ -46,14 +46,6 @@ function Navbar() {
                 Mutaxassislar
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/haqimizda"
-                className={({ isActive }) => (isActive ? "navbar-active" : "")}
-              >
-                Biz haqimizda
-              </NavLink>
-            </li>
           </ul>
           <div className="siti-login">
             {user ? (
@@ -118,22 +110,22 @@ function Navbar() {
             </li>
             <li>
               <NavLink
+                to="/create"
+                className={({ isActive }) =>
+                  isActive ? "mobile-navbar-active" : ""
+                }
+              >
+                <FaPlus />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/mutaxassislar"
                 className={({ isActive }) =>
                   isActive ? "mobile-navbar-active" : ""
                 }
               >
                 <FaUserCog />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/haqimizda"
-                className={({ isActive }) =>
-                  isActive ? "mobile-navbar-active" : ""
-                }
-              >
-                <FaInfoCircle />
               </NavLink>
             </li>
             <li>

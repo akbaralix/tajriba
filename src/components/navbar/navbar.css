@@ -119,12 +119,13 @@ li {
 }
 
 .mb-nav ul svg {
+  color: #777;
   height: 2.2rem;
   width: 2.2rem;
 }
 
 .mobile-navbar-active svg {
-  color: #afafaf;
+  color: #ffffff !important;
   transition: 0.1s ease;
 }
 
