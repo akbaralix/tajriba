@@ -35,8 +35,10 @@ function Home() {
         <div className="about-container">
           <div className="about-header">
             <span className="badge">Biz Haqimizda</span>
+            <br />
             <h2 className="main-title">
-              O'zbekistonning mikro-amaliyot <br /> platformasi bilan tanishing
+              <span style={{ color: "#9484fcff" }}>Tajriba</span> platformasi
+              bilan tanishing
             </h2>
           </div>
 
@@ -104,21 +106,6 @@ function Home() {
               </ul>
             </div>
           </div>
-
-          <div className="stats-panel">
-            <div className="stat-card">
-              <span className="stat-value">5,000+</span>
-              <span className="stat-label">Foydalanuvchi</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-value">1,200+</span>
-              <span className="stat-label">Loyihalar</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-value">100%</span>
-              <span className="stat-label">Kafolat</span>
-            </div>
-          </div>
         </div>
       </section>
       <section className="categories-section">
@@ -139,6 +126,20 @@ function Home() {
               <FaRocket className="cat-icon" />
               <h4>Marketing</h4>
               <p>Target va reklama</p>
+            </div>
+          </div>
+          <div className="stats-panel">
+            <div className="stat-card">
+              <span className="stat-value">5,000+</span>
+              <span className="stat-label">Foydalanuvchi</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-value">1,200+</span>
+              <span className="stat-label">Loyihalar</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-value">100%</span>
+              <span className="stat-label">Kafolat</span>
             </div>
           </div>
         </div>

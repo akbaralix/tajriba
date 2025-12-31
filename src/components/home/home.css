@@ -230,7 +230,7 @@
 @media (max-width: 990px) {
   .about-wrapper {
     margin-top: 20px;
-    padding: 0 0 80px 0;
+    padding: 0;
   }
   .about-container {
     padding: 0;
@@ -246,6 +246,7 @@
     margin-top: 10px;
     gap: 20px;
     border-radius: 30px;
+    margin-bottom: 70px;
   }
   .stat-card {
     border-right: none;
@@ -268,6 +269,9 @@
   }
   .header-main_paragraph {
     font-size: 0.9em;
+  }
+  .categories-section {
+    padding: 0;
   }
   .categories-grid {
     margin-bottom: 20px;
