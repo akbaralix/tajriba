@@ -1,10 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { FaTelegram, FaSearchengin, FaCopy } from "react-icons/fa6";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaClock } from "react-icons/fa";
 import { MdOutlineReport } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
+
+import { formatTime } from "../../utils"; // utils.ts faylga nisbatan path
+
 import "react-toastify/dist/ReactToastify.css"; // Toastify CSS ni qo'shish kerak bo'lishi mumkin
 import "./mutaxassislar.css";
 
@@ -18,6 +22,7 @@ interface Resume {
   soha?: string;
   userpic?: string;
   createdAt: string;
+  updatedAt: string;
   views?: number;
 }
 
@@ -351,7 +356,13 @@ function Mutahasislar() {
             >
               <FaTelegram /> <p>Javob berish</p>
             </button>
-            <div className="buyurtma-actions">
+            <div className="crdata">
+              <div className="data">
+                <p>
+                  <FaClock className="FaClock" />
+                </p>
+                <span>{formatTime(item.updatedAt)}</span>
+              </div>
               <div className="eye">
                 <IoMdEye />
                 <span>{item.views || 0}</span>

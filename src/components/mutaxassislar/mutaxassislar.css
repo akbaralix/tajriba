@@ -115,28 +115,6 @@
   align-items: center;
   justify-content: center;
 }
-.buyurtma-actions {
-  display: flex;
-  gap: 10px;
-  position: absolute;
-  right: 10px;
-  bottom: 20px;
-}
-.buyurtma-actions button {
-  background-color: #ffffff14;
-  border: none;
-  padding: 7px 10px;
-  border: 1px solid #555;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 18px;
-  color: #fff;
-  transition: 0.3s ease;
-  z-index: 12;
-}
 
 .eye {
   display: flex;

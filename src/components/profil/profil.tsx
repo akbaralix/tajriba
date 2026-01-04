@@ -2,7 +2,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
+import { FaClock } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
+import { formatTime } from "../../utils"; // utils.ts faylga nisbatan path
 
 import "./profil.css";
 
@@ -15,6 +17,7 @@ interface Resume {
   username?: string;
   soha?: string;
   userpic?: string;
+  createdAt: string;
   views?: number;
 }
 
@@ -259,8 +262,17 @@ function Profil() {
                   >
                     Bog'lanish
                   </button>
-                  <div className="my-resumes-views">
-                    <IoMdEye /> <span>{item.views || 0}</span>
+                  <div className="crdata">
+                    <div className="data">
+                      <p>
+                        <FaClock className="FaClock" />
+                      </p>
+                      <span>{formatTime(item.createdAt)}</span>
+                    </div>
+                    <div className="eye">
+                      <IoMdEye />
+                      <span>{item.views || 0}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -307,8 +319,18 @@ function Profil() {
                 >
                   Aloqa
                 </button>
-                <div className="my-resumes-views">
-                  <IoMdEye /> <span>{item.views || 0}</span>
+
+                <div className="crdata">
+                  <div className="data">
+                    <p>
+                      <FaClock className="FaClock" />
+                    </p>
+                    <span>{formatTime(item.createdAt)}</span>
+                  </div>
+                  <div className="eye">
+                    <IoMdEye />
+                    <span>{item.views || 0}</span>
+                  </div>
                 </div>
               </div>
             </div>
