@@ -6,19 +6,15 @@
   margin-bottom: 10px;
 }
 .buyurtmalar {
-  background: #1e1e1e;
-  padding: 10px 20px;
-  border-radius: 8px;
+  /* background: #191919; */
+  border-bottom: 1px solid #333;
+  padding: 10px 20px 40px;
+  /* border-radius: 8px; */
   position: relative;
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
   transition: all 0.2s ease-in-out;
-  border: 1px solid transparent;
-}
-
-.buyurtmalar:hover {
-  border-color: #373737;
 }
 
 .user-a {
@@ -27,8 +23,8 @@
   gap: 10px;
 }
 .user-a img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid #333;
@@ -70,18 +66,22 @@
   font-size: 17px;
   word-break: break-word;
   overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Matn necha qatordan keyin qirqilsin? */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .buyurtma-narx {
   position: absolute;
   top: 10px;
-  right: 10px;
-  background-color: #1e1e1e;
+  right: 40px;
+  background-color: #1e1e1e56;
   color: #ffffff;
   border: 1px solid #444;
   padding: 5px 10px;
   border-radius: 8px;
-
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -92,19 +92,19 @@
   justify-content: center;
   width: 200px;
   gap: 10px;
-  background-color: #333;
+  background-color: #33333300;
   color: #fff; /* oq matn */
-  border: 1px solid #555; /* yumshoq border */
+  border: 1px solid #3f3f3f; /* yumshoq border */
   padding: 12px 20px;
   margin-top: 20px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 700;
+  font-size: 15px;
   transition: 0.3s ease;
 }
 .buyurtma-javob_btn:hover {
-  background-color: #444;
-  background-color: #444; /* hoverda accent rang (yashil) */
+  background-color: #2d2d2d34;
   border-color: #575757;
 }
 .buyurtma-javob_btn svg {
@@ -169,7 +169,7 @@
     margin-bottom: 70px;
   }
   .buyurtmalar {
-    padding: 20px;
+    padding: 20px 10px;
   }
 
   .user-a img {

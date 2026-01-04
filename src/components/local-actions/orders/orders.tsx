@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FaTelegram, FaArrowLeft, FaMoneyBillWave } from "react-icons/fa6";
+import { FaTelegram, FaArrowLeft, FaMoneyBill } from "react-icons/fa6";
 import { IoMdEye } from "react-icons/io";
 
 interface Order {
@@ -94,16 +94,16 @@ function OrderDetail() {
               padding: "12px",
               background: "rgba(76, 175, 80, 0.15)",
               borderRadius: "10px",
-              color: "#4caf50",
               display: "inline-flex",
               alignItems: "center",
               gap: "10px",
               border: "1px solid rgba(76, 175, 80, 0.3)",
             }}
           >
-            <FaMoneyBillWave size={20} />
-            <span>
-              Byudjet: <strong>{order.budget}</strong>
+            <FaMoneyBill size={20} />
+            <span style={{ display: "flex", gap: 12 }}>
+              <p style={{ color: "#1e8f29ff" }}>Byudjet:</p>{" "}
+              <strong>{order.budget}</strong>
             </span>
           </div>
         </div>
@@ -129,5 +129,3 @@ function OrderDetail() {
 }
 
 export default OrderDetail;
-
-

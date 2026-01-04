@@ -34,12 +34,18 @@ function Home() {
       <section className="about-wrapper">
         <div className="about-container">
           <div className="about-header">
-            <span className="badge">Biz Haqimizda</span>
             <br />
             <h2 className="main-title">
-              <span style={{ color: "#9484fcff" }}>Tajriba</span> platformasi
+              <span style={{ color: "#614afaff" }}>Tajriba</span> platformasi
               bilan tanishing
             </h2>
+            <p className="main-title_text">
+              Ko‘plab yosh mutaxassislar o‘quv kurslarini tamomlagandan so‘ng
+              bir xil yopiq doira ichida qolib ketishadi. Ishga kirish uchun
+              tajriba kerak, tajriba orttirish uchun esa ishga kirish kerak.
+              Ushbu dolzarb muammoga yechim sifatida yangi "Tajriba" platformasi
+              ishga tushirildi.
+            </p>
           </div>
 
           <div className="about-grid">

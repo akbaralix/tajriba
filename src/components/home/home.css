@@ -105,15 +105,6 @@
   margin-top: 20px;
 }
 
-.badge {
-  color: #007bff;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 30px;
-  display: block;
-}
-
 .main-title {
   font-size: 42px;
   font-weight: 800;
@@ -226,7 +217,10 @@
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
 }
-
+.main-title_text {
+  font-size: 28px;
+  margin-top: 25px;
+}
 @media (max-width: 990px) {
   .about-wrapper {
     margin-top: 20px;
@@ -275,5 +269,10 @@
   }
   .categories-grid {
     margin-bottom: 20px;
+  }
+  .main-title_text {
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.6;
   }
 }

@@ -153,6 +153,15 @@ function Buyurtmalar() {
             <h2 className="loader-text"></h2>
             <p className=" loader-text"></p>
             <button className="loader-buyurtma-btn"></button>
+            <hr
+              style={{
+                marginTop: 12,
+                border: "none",
+                height: "1px",
+                width: "100%",
+                backgroundColor: "#444",
+              }}
+            />
           </div>
         ))}
       </div>
