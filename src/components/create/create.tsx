@@ -203,7 +203,6 @@ function Create() {
               <label>Budjet ($ yoki so'm)</label>
               <input
                 type="text"
-                inputMode="numeric"
                 placeholder="Masalan: 500$"
                 maxLength={20}
                 value={orderData.budget}

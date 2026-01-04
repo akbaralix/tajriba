@@ -18,12 +18,29 @@ interface Resume {
   views?: number;
 }
 
+interface Orders {
+  _id: string;
+  userId: string;
+  creator: string;
+  title: string;
+  description: string;
+  budget: string;
+  createdAt: string;
+  creatorpic?: string;
+  tguserorder?: string;
+  views?: number;
+}
+
 function Profil() {
   const navigate = useNavigate();
   const [count, setCount] = useState("0");
-  const [buyurtma, setBuyurtma] = useState("0");
+  const [buyurtmaTotal, setBuyurtmaTotal] = useState(0);
   const [resumes, setResumes] = useState<Resume[]>([]);
+  const [myOrders, setMyOrders] = useState<Orders[]>([]);
   const [logouts, setlogouts] = useState(false);
+
+  // Tab almashtirish uchun state
+  const [activeTab, setActiveTab] = useState<"resumes" | "orders">("resumes");
 
   const userData = localStorage.getItem("userData");
   const user = userData ? JSON.parse(userData) : null;
@@ -39,79 +56,56 @@ function Profil() {
     navigate("/login");
   };
 
-  // Foydalanuvchilar sonini olish
   useEffect(() => {
-    const fetchUserCount = async () => {
+    const fetchData = async () => {
       try {
-        const res = await fetch(
+        const userRes = await fetch(
           "https://tajriba-a32v.onrender.com/api/user/count"
         );
-        const data = await res.json();
-        setCount(data.count);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchUserCount();
-  }, []);
+        const userData = await userRes.json();
+        setCount(userData.count);
 
-  // Barcha rezyumelarni yuklash
-  useEffect(() => {
-    const fetchResumes = async () => {
-      try {
-        const response = await fetch(
+        const resumeRes = await fetch(
           "https://tajriba-a32v.onrender.com/api/resume/all"
         );
-        if (!response.ok) throw new Error("Ma'lumotlarni olishda xatolik");
+        const resumeData = await resumeRes.json();
+        setResumes(resumeData.resumes || []);
 
-        const data = await response.json();
-        setResumes(data.resumes || []);
-      } catch (error) {
-        setResumes([]);
-      }
-    };
-
-    fetchResumes();
-  }, []);
-
-  // Buyurtmalar sonini olish
-  useEffect(() => {
-    const fetchOrderCount = async () => {
-      try {
-        const res = await fetch(
+        const orderRes = await fetch(
           "https://tajriba-a32v.onrender.com/api/order/all"
         );
-        const data = await res.json();
-        setBuyurtma(data.orders.length);
+        const orderData = await orderRes.json();
+        const allOrders = orderData.orders || [];
+        setMyOrders(allOrders);
+        setBuyurtmaTotal(allOrders.length);
       } catch (error) {
-        console.log(error);
+        console.error("Ma'lumot yuklashda xato:", error);
       }
     };
-    fetchOrderCount();
+
+    if (user) fetchData();
   }, []);
 
   const myOwnResumes = resumes.filter(
     (item) => item.userId === user?.uid || item.userId === user?.userId
   );
 
-  const handleDeleteResume = async (resumeId: string) => {
-    if (!window.confirm("Rostdan ham ushbu elonni o‘chirmoqchimisiz?")) return;
+  const myOwnOrders = myOrders.filter(
+    (item) => item.userId === user?.uid || item.userId === user?.userId
+  );
 
+  const handleDeleteResume = async (resumeId: string) => {
+    if (!window.confirm("Rostdan ham ushbu e'lonni o'chirmoqchimisiz?")) return;
     try {
       const response = await fetch(
         `https://tajriba-a32v.onrender.com/api/resume/${resumeId}`,
-        {
-          method: "DELETE",
-        }
+        { method: "DELETE" }
       );
-
-      if (!response.ok) throw new Error("O‘chirishda xatolik yuz berdi");
-
-      // Local state-ni ham yangilash
+      if (!response.ok) throw new Error();
       setResumes((prev) => prev.filter((res) => res._id !== resumeId));
+      toast.success("E'lon o'chirildi");
     } catch (error) {
-      console.error(error);
-      toast.error("O‘chirib bo‘lmadi!");
+      toast.error("O'chirishda xatolik yuz berdi!");
     }
   };
 
@@ -119,24 +113,22 @@ function Profil() {
 
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer position="top-center" />
+
       <div className="profil-wrapper">
         {logouts && (
           <div className="overlay">
             <div className="logout-container">
               <h3>Haqiqatdan ham hisobdan chiqmoqchimisiz?</h3>
               <div className="logout-btn">
-                <button
-                  style={{ backgroundColor: "green" }}
-                  onClick={handleLogout}
-                >
+                <button className="confirm-btn" onClick={handleLogout}>
                   Ha
                 </button>
                 <button
-                  style={{ backgroundColor: "red" }}
+                  className="cancel-btn"
                   onClick={() => setlogouts(false)}
                 >
-                  Yo‘q
+                  Yo'q
                 </button>
               </div>
             </div>
@@ -147,59 +139,142 @@ function Profil() {
           <div className="user-card">
             <div className="user-avatar-wrapper">
               <img
-                src={user.photo || user.photoURL}
-                alt="Foydalanuvchi"
+                src={user.photo || user.photoURL || "/default-user.png"}
+                alt="Avatar"
                 className="user-avatar"
               />
               <div className="status-badge"></div>
             </div>
-
             <div className="user-info text-center">
               <h2 className="user-name">{user.displayName || user.name}</h2>
               <p className="user-email">{user.email}</p>
             </div>
           </div>
 
-          <div>
-            {user.email === "tursunboyevakbarali807@gmail.com" ? (
-              <div className="main-page_a">
-                <div className="user-soni">
-                  <p>Azolar</p>
-                  <span>{count}</span>
-                </div>
-                <div className="user-soni">
-                  <p> Elonlar</p>
-                  <span>{resumes.length}</span>
-                </div>
-                <div className="user-soni">
-                  <p>Buyurtmalar</p>
-                  <span>{buyurtma}</span>
-                </div>
+          {user.email === "tursunboyevakbarali807@gmail.com" && (
+            <div className="main-page_a">
+              <div className="user-soni">
+                <p>A'zolar</p>
+                <span>{count}</span>
               </div>
-            ) : null}
+              <div className="user-soni">
+                <p>E'lonlar</p>
+                <span>{resumes.length}</span>
+              </div>
+              <div className="user-soni">
+                <p>Buyurtmalar</p>
+                <span>{buyurtmaTotal}</span>
+              </div>
+            </div>
+          )}
+
+          {/* TAB BUTTONS - O'rtadagi almashtirgich */}
+          <div className="user-actions_profile">
+            <div
+              className={`resumes-actions prof-act ${
+                activeTab === "resumes" ? "active-tab" : ""
+              }`}
+              onClick={() => setActiveTab("resumes")}
+              style={{
+                cursor: "pointer",
+                borderBottom:
+                  activeTab === "resumes" ? "2px solid #007bff" : "none",
+              }}
+            >
+              <p>Resumelar</p>
+              <span>{myOwnResumes.length}</span>
+            </div>
+            <div
+              className={`orders-actions prof-act ${
+                activeTab === "orders" ? "active-tab" : ""
+              }`}
+              onClick={() => setActiveTab("orders")}
+              style={{
+                cursor: "pointer",
+                borderBottom:
+                  activeTab === "orders" ? "3px solid #087fffff" : "none",
+              }}
+            >
+              <p>Buyurtmalar</p>
+              <span>{myOwnOrders.length}</span>
+            </div>
           </div>
 
           <div className="actions-grid">
-            <Link title="Elon joylash" to="/create" className="action-item">
+            <Link to="/create" className="action-item">
               <div className="icon-circle">📄</div>
-              <span>Elon joylash</span>
+              <span>E'lon joylash</span>
             </Link>
-
             <button
               className="action-item logout"
               onClick={() => setlogouts(true)}
             >
               <div className="icon-circle">🚪</div>
-              <span>Tizimdan chiqish</span>
+              <span>Chiqish</span>
             </button>
           </div>
         </div>
       </div>
-      {/* Foydalanuvchining o'z elonlari ro'yxati */}
+
+      {/* DINAMIK RO'YXAT */}
       <div className="user-own-resumes">
-        {myOwnResumes.length > 0 ? (
-          myOwnResumes.map((item) => (
+        <h3 style={{ textAlign: "center", margin: "20px 0" }}>
+          {activeTab === "resumes"
+            ? "Mening resumelarim"
+            : "Mening buyurtmalarim"}
+        </h3>
+
+        {activeTab === "resumes" ? (
+          // RESUMELAR RO'YXATI
+          myOwnResumes.length > 0 ? (
+            myOwnResumes.map((item) => (
+              <div className="buyurtmalar" key={item._id}>
+                <button
+                  onClick={() => handleDeleteResume(item._id)}
+                  className="delete-resume-btn"
+                >
+                  <MdOutlineDeleteOutline />
+                </button>
+                <div className="user-a">
+                  <img src={item.userpic || "/default-user.png"} alt="user" />
+                  <div className="about-user">
+                    <h2>{item.username || "Foydalanuvchi"}</h2>
+                  </div>
+                </div>
+                <h2 className="buyurtma-discripton">{item.kasb}</h2>
+                <p className="buyurtma-title">{item.bio}</p>
+                <div
+                  className="card-footer"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <button
+                    onClick={() =>
+                      window.open(`https://t.me/${item.tguser}`, "_blank")
+                    }
+                    className="buyurtma-javob_btn"
+                  >
+                    Bog'lanish
+                  </button>
+                  <div className="my-resumes-views">
+                    <IoMdEye /> <span>{item.views || 0}</span>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="no-data-text" style={{ textAlign: "center" }}>
+              Sizda hali resumelar mavjud emas.
+            </p>
+          )
+        ) : // BUYURTMALAR RO'YXATI
+        myOwnOrders.length > 0 ? (
+          myOwnOrders.map((item) => (
             <div className="buyurtmalar" key={item._id}>
+              {/* Buyurtmani o'chirish funksiyasi bo'lsa shu yerga tugma qo'shish mumkin */}
               <button
                 onClick={() => handleDeleteResume(item._id)}
                 className="delete-resume-btn"
@@ -207,41 +282,40 @@ function Profil() {
                 <MdOutlineDeleteOutline />
               </button>
               <div className="user-a">
-                <img
-                  src={item.userpic || "/default-user.png"}
-                  alt={item.username || "Anonim"}
-                />
+                <img src={item.creatorpic || "/default-user.png"} alt="user" />
                 <div className="about-user">
-                  <h2>{item.username || "Anonim"}</h2>
+                  <h2>{item.creator}</h2>
                 </div>
               </div>
-              <h2 className="buyurtma-discripton">{item.kasb}</h2>
-              <p className="buyurtma-title">{item.bio}</p>
-
-              <button
-                onClick={() =>
-                  window.open(`https://t.me/${item.tguser}`, "_blank")
-                }
-                className="buyurtma-javob_btn"
+              <h2 className="buyurtma-discripton">{item.title}</h2>
+              <p className="buyurtma-title">{item.description}</p>
+              <p className="buyurtma-narxi">{item.budget}</p>
+              <div
+                className="card-footer"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "10px",
+                }}
               >
-                <p>Javob berish</p>
-              </button>
-              <div className="my-resumes-views">
-                <IoMdEye />
-                <span>{item.views || 0}</span>
+                <button
+                  onClick={() =>
+                    window.open(`https://t.me/${item.tguserorder}`, "_blank")
+                  }
+                  className="buyurtma-javob_btn"
+                >
+                  Aloqa
+                </button>
+                <div className="my-resumes-views">
+                  <IoMdEye /> <span>{item.views || 0}</span>
+                </div>
               </div>
             </div>
           ))
         ) : (
-          <p
-            style={{
-              textAlign: "center",
-              marginTop: "20px",
-              color: "gray",
-              fontSize: "14px",
-            }}
-          >
-            Sizda hali elonlar mavjud emas.
+          <p className="no-data-text" style={{ textAlign: "center" }}>
+            Sizda hali buyurtmalar mavjud emas.
           </p>
         )}
       </div>

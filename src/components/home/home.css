@@ -220,6 +220,7 @@
 .main-title_text {
   font-size: 28px;
   margin-top: 25px;
+  font-weight: 600;
 }
 @media (max-width: 990px) {
   .about-wrapper {
@@ -239,8 +240,11 @@
     grid-template-columns: 1fr;
     margin-top: 10px;
     gap: 20px;
-    border-radius: 30px;
-    margin-bottom: 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 60px;
   }
   .stat-card {
     border-right: none;
@@ -271,7 +275,7 @@
     margin-bottom: 20px;
   }
   .main-title_text {
-    font-size: 14px;
+    font-size: 15px;
     margin-top: 10px;
     line-height: 1.6;
   }

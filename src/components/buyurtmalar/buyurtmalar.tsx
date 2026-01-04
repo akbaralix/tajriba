@@ -32,7 +32,7 @@ function Buyurtmalar() {
   const [report, setReport] = useState<string | null>(null);
 
   const user: UserType = JSON.parse(
-    localStorage.getItem("user") || '{"name": "Foydalanuvchi"}'
+    localStorage.getItem("userData") || '{"name": "Foydalanuvchi"}'
   );
 
   const BOT_TOKEN = "7895195245:AAF-QtBrVuKOYupFieHpqNvfkB4yq62JZMk";
