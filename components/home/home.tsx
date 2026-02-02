@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { FaSearch, FaCode, FaPaintBrush, FaRocket } from "react-icons/fa";
 import { FaArrowCircleRight } from "react-icons/fa";
 
-import placholderImg from "../../../public/image placholder.png";
-
 function Home() {
   return (
     <div>
@@ -51,7 +49,7 @@ function Home() {
           <div className="about-grid">
             <div className="visual-box">
               <div className="image-card">
-                <img src={placholderImg} alt="Bizning platforma rasmi" />
+                <img src="/image placholder.png" alt="Lgo" />
               </div>
             </div>
 

@@ -1,10 +1,10 @@
 // utils.ts
 
 export const formatTime = (createdAt: string) => {
-  if (!createdAt) return "Noma'lum vaqt";
+  if (!createdAt) return "0/0";
 
   const created = new Date(createdAt);
-  if (isNaN(created.getTime())) return "Noma'lum vaqt";
+  if (isNaN(created.getTime())) return "0/0";
 
   const now = new Date();
   const diffMs = now.getTime() - created.getTime();

@@ -7,7 +7,7 @@ import { IoMdEye } from "react-icons/io";
 import { LuSend } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 
-import { formatTime } from "../../utils"; // utils.ts faylga nisbatan path
+import { formatTime } from "../utils"; // utils.ts faylga nisbatan path
 
 import "react-toastify/dist/ReactToastify.css"; // Toastify CSS ni qo'shish kerak bo'lishi mumkin
 import "./mutaxassislar.css";
@@ -39,7 +39,7 @@ function Mutahasislar() {
   const activeElementRef = useRef<HTMLDivElement>(null);
 
   const filteredMutahasislar = mutaxassislar.filter((item) =>
-    (item.kasb ?? "").toLowerCase().includes(searchQuery.toLowerCase())
+    (item.kasb ?? "").toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const BOT_TOKEN = "7895195245:AAF-QtBrVuKOYupFieHpqNvfkB4yq62JZMk";
@@ -50,7 +50,7 @@ function Mutahasislar() {
     const fetchResumes = async () => {
       try {
         const response = await fetch(
-          "https://tajriba-a32v.onrender.com/api/resume/all"
+          "https://tajriba-a32v.onrender.com/api/resume/all",
         );
         if (!response.ok) throw new Error("Ma'lumotlarni olishda xatolik");
 
@@ -62,9 +62,9 @@ function Mutahasislar() {
           await Promise.all(
             data.resumes.map((resume: Resume) =>
               fetch(
-                `https://tajriba-a32v.onrender.com/api/resume/${resume._id}`
-              )
-            )
+                `https://tajriba-a32v.onrender.com/api/resume/${resume._id}`,
+              ),
+            ),
           );
         }
       } catch (error) {
@@ -336,7 +336,7 @@ function Mutahasislar() {
             >
               <div className="user-a">
                 <img
-                  src={item.userpic || "/default-user.png"}
+                  src={item.userpic || "/devault-avatar.jpg"}
                   alt={item.username || "Anonim"}
                 />
                 <div className="about-user">
@@ -361,7 +361,7 @@ function Mutahasislar() {
                 <p>
                   <FaClock className="FaClock" />
                 </p>
-                <span>{formatTime(item.updatedAt)}</span>
+                <span>{formatTime(item.createdAt)}</span>
               </div>
               <div className="eye">
                 <IoMdEye />

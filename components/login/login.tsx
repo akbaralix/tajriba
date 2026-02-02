@@ -1,9 +1,9 @@
 import { FaGoogle } from "react-icons/fa";
 import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../firebase";
+import { auth, googleProvider } from "../../src/firebase.js";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import tajriba from ".././../../public/stickerok.png";
+import tajriba from "/hi-gesture-3d-icon-png-download-5466104.webp";
 import "./login.css";
 
 function Login() {
@@ -34,7 +34,7 @@ function Login() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(userData),
-        }
+        },
       );
 
       if (!res.ok) {

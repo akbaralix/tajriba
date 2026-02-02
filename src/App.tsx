@@ -1,12 +1,12 @@
-import Home from "./components/home/home";
-import Navbar from "./components/navbar/navbar";
-import Profil from "./components/profil/profil";
-import Buyurtmalar from "./components/buyurtmalar/buyurtmalar";
-import Create from "./components/create/create";
-import Mutahasislar from "./components/mutaxassislar/mutaxassislar";
-import Login from "./components/login/login";
-import Resumes from "./components/local-actions/resumes/resume";
-import Orders from "./components/local-actions/orders/orders";
+import Home from "../components/home/home";
+import Navbar from "../components/navbar/navbar";
+import Profil from "../components/profil/profil";
+import Buyurtmalar from "../components/buyurtmalar/buyurtmalar";
+import Create from "../components/create/create";
+import Mutahasislar from "../components/mutaxassislar/mutaxassislar";
+import Login from "../components/login/login";
+import Resumes from "../components/local-actions/resumes/resume";
+import Orders from "../components/local-actions/orders/orders";
 
 import { Routes, Route } from "react-router-dom";
 import "./App.css";

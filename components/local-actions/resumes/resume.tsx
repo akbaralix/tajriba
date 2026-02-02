@@ -33,8 +33,6 @@ function ResumeDetail() {
         const storageKey = `viewed_resume_${id}`;
         const isViewed = localStorage.getItem(storageKey);
 
-        // MUHIM: Har doim bitta bazaviy URL dan foydalanamiz
-        // Faqat ko'rilmagan bo'lsa oxiriga ?increment=true qo'shamiz
         let url = `https://tajriba-a32v.onrender.com/api/resume/${id}`;
         if (!isViewed) {
           url += "?increment=true";
@@ -99,7 +97,7 @@ function ResumeDetail() {
               window.open(`https://t.me/${resume.tguser}`, "_blank")
             }
           >
-            <FaTelegram /> Telegram orqali bog'lanish
+            <FaTelegram /> Bog'lanish
           </button>
         </div>
       </div>

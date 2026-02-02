@@ -4,7 +4,7 @@ import { MdOutlineDeleteOutline } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import { FaClock } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
-import { formatTime } from "../../utils"; // utils.ts faylga nisbatan path
+import { formatTime } from "../utils"; // utils.ts faylga nisbatan path
 
 import "./profil.css";
 
@@ -63,19 +63,20 @@ function Profil() {
     const fetchData = async () => {
       try {
         const userRes = await fetch(
-          "https://tajriba-a32v.onrender.com/api/user/count"
+          "https://tajriba-a32v.onrender.com/api/user/count",
         );
         const userData = await userRes.json();
         setCount(userData.count);
 
         const resumeRes = await fetch(
-          "https://tajriba-a32v.onrender.com/api/resume/all"
+          "https://tajriba-a32v.onrender.com/api/resume/all",
         );
+
         const resumeData = await resumeRes.json();
         setResumes(resumeData.resumes || []);
 
         const orderRes = await fetch(
-          "https://tajriba-a32v.onrender.com/api/order/all"
+          "https://tajriba-a32v.onrender.com/api/order/all",
         );
         const orderData = await orderRes.json();
         const allOrders = orderData.orders || [];
@@ -90,11 +91,11 @@ function Profil() {
   }, []);
 
   const myOwnResumes = resumes.filter(
-    (item) => item.userId === user?.uid || item.userId === user?.userId
+    (item) => item.userId === user?.uid || item.userId === user?.userId,
   );
 
   const myOwnOrders = myOrders.filter(
-    (item) => item.userId === user?.uid || item.userId === user?.userId
+    (item) => item.userId === user?.uid || item.userId === user?.userId,
   );
 
   const handleDeleteResume = async (resumeId: string) => {
@@ -102,7 +103,7 @@ function Profil() {
     try {
       const response = await fetch(
         `https://tajriba-a32v.onrender.com/api/resume/${resumeId}`,
-        { method: "DELETE" }
+        { method: "DELETE" },
       );
       if (!response.ok) throw new Error();
       setResumes((prev) => prev.filter((res) => res._id !== resumeId));
@@ -124,11 +125,11 @@ function Profil() {
             <div className="logout-container">
               <h3>Haqiqatdan ham hisobdan chiqmoqchimisiz?</h3>
               <div className="logout-btn">
-                <button className="confirm-btn" onClick={handleLogout}>
+                <button style={{ background: "red" }} onClick={handleLogout}>
                   Ha
                 </button>
                 <button
-                  className="cancel-btn"
+                  style={{ background: "green" }}
                   onClick={() => setlogouts(false)}
                 >
                   Yo'q

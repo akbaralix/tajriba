@@ -8,7 +8,7 @@ import { MdOutlineReport } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 
 import { useEffect, useState } from "react";
-import { formatTime } from "../../utils";
+import { formatTime } from "../utils";
 
 interface BuyurtmaType {
   _id: string;
@@ -33,7 +33,7 @@ function Buyurtmalar() {
   const [report, setReport] = useState<string | null>(null);
 
   const user: UserType = JSON.parse(
-    localStorage.getItem("userData") || '{"name": "Foydalanuvchi"}'
+    localStorage.getItem("userData") || '{"name": "Foydalanuvchi"}',
   );
 
   const BOT_TOKEN = "7895195245:AAF-QtBrVuKOYupFieHpqNvfkB4yq62JZMk";
@@ -42,7 +42,7 @@ function Buyurtmalar() {
     const fetchOrders = async () => {
       try {
         const res = await fetch(
-          "https://tajriba-a32v.onrender.com/api/order/all"
+          "https://tajriba-a32v.onrender.com/api/order/all",
         );
         const data = await res.json();
         setBuyurtma(data.orders || []);
