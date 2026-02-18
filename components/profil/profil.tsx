@@ -110,6 +110,7 @@ function Profil() {
       toast.success("E'lon o'chirildi");
     } catch (error) {
       toast.error("O'chirishda xatolik yuz berdi!");
+      console.log(error);
     }
   };
 
